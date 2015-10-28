@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image
+			icon="icons/project-nature.ovr.png"
+			id="org.cfeclipse.ide.ui.NatureImage"
+			natureId="org.cfeclipse.ide.core.nature">
+		</image>
+	</extension>
+	
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+			class="org.cfeclipse.ide.ui.CfmlPerspective"
+			icon="icons/views/Perspective.png"
+			id="org.cfeclipse.ide.ui.Perspective"
+			name="%LangPerspective.name">
+		</perspective>
+	</extension>
+	
+	<extension point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.cfeclipse.ide.ui.Perspective">
+			<showInPart id="org.eclipse.ui.navigator.ProjectExplorer" />
+		</perspectiveExtension>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="org.cfeclipse.ide.ui.CfmlUIPreferencesInitializer"/>
+	</extension>
+	
+	<!-- ============ EDITOR ============= -->
+	
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor
+		 class="org.cfeclipse.ide.ui.editor.CfmlEditor"
+		 contributorClass="org.cfeclipse.ide.ui.editor.CfmlEditorActionContributor"
+		 default="true"
+		 icon="icons/views/SourceEditor.png"
+		 id="org.cfeclipse.ide.ui.Editors.SourceEditor"
+		 name="%LangEditor.name">
+			<contentTypeBinding contentTypeId="org.cfeclipse.ide.core.content.source" />
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.ui.contexts">
+		<context
+			name="%LangEditContext.name"
+			description="%LangEditContext.description"
+			parentId="org.eclipse.ui.textEditorScope"
+			id="org.cfeclipse.ide.ui.Contexts.Editor">
+		</context>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="org.cfeclipse.ide.ui.expressions.InContext">
+			<or>
+				<with variable="activeEditorId"> 
+					<equals value="org.cfeclipse.ide.ui.Editors.SourceEditor"/> 
+				</with>
+				<with variable="activeWorkbenchWindow.activePerspective"> 
+					<equals value="org.cfeclipse.ide.ui.Perspective"/> 
+				</with>
+			</or>
+		</definition>
+	</extension>
+	
+	
+	<!-- ============ EDITOR - Other ============= -->
+	
+	<extension point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectorTargets">
+		<target 
+			id="org.cfeclipse.ide.ui.Editor.HyperlinkCodeTarget"
+			name="%hyperlinkDetector.target.name">
+		<context type="org.eclipse.ui.texteditor.ITextEditor" />
+		</target>
+	</extension>
+	<extension point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+		<hyperlinkDetector
+			class="org.cfeclipse.ide.ui.editor.CfmlHyperlinkDetector"
+			id="org.cfeclipse.ide.ui.Editor.HyperlinkDetector"
+			name="%hyperlinkDetector.name"
+			targetId="org.cfeclipse.ide.ui.Editor.HyperlinkCodeTarget">
+		</hyperlinkDetector>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.templates">
+		<contextType
+			class="org.cfeclipse.ide.ui.editor.templates.CfmlTemplateContextType"
+			id="org.cfeclipse.ide.ui.TemplateContextType"
+			name="%LangTemplateContext.name">
+		</contextType>
+		<include
+			file="templates/default-templates.xml"
+			translations="templates/default-templates.properties">
+		</include>
+	</extension>
+	
+	<!-- ============ Actions/Commands ============= -->
+	
+	<extension point="org.eclipse.ui.commands">
+		<category
+			id="org.cfeclipse.ide.ui.commands.Category"
+			name="%CommandsCategory.name"
+			description="%CommandsCategory.description"
+		/>
+		
+		<command categoryId="org.cfeclipse.ide.ui.commands.Category"
+			id="org.cfeclipse.ide.ui.commands.openDefinition"
+			name="%OpenDefinitionAction.name"
+			description="%OpenDefinitionAction.tooltip"
+		/>
+		
+		<command categoryId="org.cfeclipse.ide.ui.commands.Category"
+			id="org.cfeclipse.ide.ui.commands.GoToMatchingBracket"
+			name="%GoToMatchingBracketAction.name"
+			description="%GoToMatchingBracketAction.description"
+		/>
+		
+		<command categoryId="org.cfeclipse.ide.ui.commands.Category"
+			id="org.cfeclipse.ide.ui.commands.ToggleComment"
+			name="%ToggleCommentAction.name"
+			description="%ToggleCommentAction.description"
+		/>
+		
+		<command 
+			categoryId="org.cfeclipse.ide.ui.commands.Category"
+			id="org.cfeclipse.ide.ui.commands.QuickOutline"
+			name="%QuickOutlineAction.name"
+			description="%QuickOutlineAction.description"
+		/>
+		
+	</extension>
+	
+	<extension point="org.eclipse.ui.bindings">
+		<key
+			commandId="org.cfeclipse.ide.ui.commands.openDefinition"
+			contextId="org.cfeclipse.ide.ui.Contexts.Editor"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="F3">
+		</key>
+		<key
+			commandId="org.cfeclipse.ide.ui.commands.GoToMatchingBracket"
+			contextId="org.cfeclipse.ide.ui.Contexts.Editor"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M2+P">
+		</key>
+		<key
+			commandId="org.cfeclipse.ide.ui.commands.ToggleComment"
+			contextId="org.cfeclipse.ide.ui.Contexts.Editor"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M2+C">
+		</key>
+		<key
+			commandId="org.cfeclipse.ide.ui.commands.ToggleComment"
+			contextId="org.cfeclipse.ide.ui.Contexts.Editor"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+/">
+		</key>
+		<key
+			commandId="org.cfeclipse.ide.ui.commands.QuickOutline"
+			contextId="org.cfeclipse.ide.ui.Contexts.Editor"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+O">
+		</key>
+	</extension>
+	
+	<!-- ________ Menu/UI contributions ________ -->
+	
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=edit">
+			<menu
+				id="org.cfeclipse.ide.ui.sourceMenu"
+				label="Source"
+				mnemonic="S">
+				<separator name="comment" visible="true"/>
+				<separator name="format" visible="true"/>
+				<separator name="additions" visible="true"/>
+			</menu>
+		</menuContribution>
+	</extension>
+	
+	<!-- ============ Preference pages ============= -->
+	
+	<extension point="org.eclipse.ui.keywords">
+		<keyword id="org.cfeclipse.ide.ui.RootPreferencePage" 
+		                            label="%RootPreferencePage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.EditorPreferencePage"
+		                            label="%EditorPreferencePage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.EditorTypingPreferencePage"
+		                            label="%EditorTypingPreferencePage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.EditorSyntaxColoringPreferencePage"
+		                            label="%EditorSyntaxColoringPreferencePage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.ContentAssistPreferencePage"
+		                            label="%ContentAssistPreferencePage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.CodeTemplatesPreferencePage"
+		                            label="%CodeTemplatesPreferencePage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.DaemonToolPrefPage"
+		                            label="%DaemonToolPrefPage.keywords"/>
+		<keyword id="org.cfeclipse.ide.ui.ToolsConsolePrefPage"
+		                            label="%ToolsConsolePrefPage.keywords"/>
+	</extension>
+	
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			class="org.cfeclipse.ide.ui.preferences.CfmlRoot__PreferencePage"
+			id=   "org.cfeclipse.ide.ui.PreferencePages.Root"
+			name="%RootPreferencePage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.RootPreferencePage"/>
+		</page>
+		
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Root"
+			class="org.cfeclipse.ide.ui.preferences.CfmlDaemonPreferencePage"
+			id=   "org.cfeclipse.ide.ui.PreferencePages.CfmlDaemon"
+			name="%DaemonToolPrefPage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.DaemonToolPrefPage"/>
+		</page>
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Root"
+			class="org.cfeclipse.ide.ui.preferences.CfmlToolsConsolePrefPage"
+			id=   "org.cfeclipse.ide.ui.PreferencePages.CfmlToolsConsole"
+			name="%ToolsConsolePrefPage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.ToolsConsolePrefPage"/>
+		</page>
+		
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Root"
+			class="org.cfeclipse.ide.ui.preferences.CfmlEditorPreferencePage"
+			id=   "org.cfeclipse.ide.ui.PreferencePages.Editor"
+			name="%EditorPreferencePage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.EditorPreferencePage"/>
+		</page>
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Editor"
+			class="org.cfeclipse.ide.ui.preferences.CfmlEditorTypingPreferencePage"
+			id=   "org.cfeclipse.ide.ui.PreferencePages.EditorSmartTyping"
+			name="%EditorTypingPreferencePage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.EditorTypingPreferencePage"/>
+		</page>
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Editor"
+			class="org.cfeclipse.ide.ui.preferences.CfmlSourceColoringPreferencePage"
+			id=   "org.cfeclipse.ide.ui.PreferencePages.SourceColoring"
+			name="%EditorSyntaxColoringPreferencePage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.EditorSyntaxColoringPreferencePage"/>
+		</page>
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Editor"
+			id=      "org.cfeclipse.ide.ui.PreferencePages.Editor.ContentAssist"
+			class="org.cfeclipse.ide.ui.preferences.CfmlContentAssistPreferencePage"
+			name="%ContentAssistPreferencePage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.ContentAssistPreferencePage"/>
+		</page>
+		<page
+			category="org.cfeclipse.ide.ui.PreferencePages.Editor"
+			id=      "org.cfeclipse.ide.ui.PreferencePages.Editor.CodeTemplates"
+			class="org.cfeclipse.ide.ui.editor.templates.CfmlTemplatePreferencePage"
+			name="%CodeTemplatesPreferencePage.name">
+			<keywordReference id="org.cfeclipse.ide.ui.CodeTemplatesPreferencePage"/>
+		</page>
+		
+	</extension>
+	
+	
+	<extension point="org.eclipse.ui.propertyPages">
+		<page
+			class="org.cfeclipse.ide.ui.preferences.CfmlBuildConfigurationPropertyPage"
+			id="org.cfeclipse.ide.ui.propertyPages.ProjectBuildConfiguration"
+			name="%LangBuildOptionsPropertyPage.name">
+			<enabledWhen> 
+				<reference definitionId="org.cfeclipse.ide.core.expressions.isNatureProject" />
+			</enabledWhen>
+		</page>
+		<page
+			class="org.cfeclipse.ide.ui.preferences.CfmlToolchainConfigurationPage"
+			id="org.cfeclipse.ide.ui.propertyPages.ToolchainConfiguration"
+			name="%LangToolchainPropertyPage.name">
+			<enabledWhen> 
+				<reference definitionId="org.cfeclipse.ide.core.expressions.isNatureProject" />
+			</enabledWhen>
+		</page>
+	</extension>
+	
+	<!-- ============ Wizards ============= -->
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category
+			id="org.cfeclipse.ide.ui.category"
+			name="%LangWizardsCategory.name"/>
+		<wizard
+			category="org.cfeclipse.ide.ui.category"
+			id="org.cfeclipse.ide.ui.wizards.NewProjectWizard"
+			class="org.cfeclipse.ide.ui.wizards.CfmlProjectWizard"
+			icon="icons/actions/new_project_wizard.16.png"
+			name="%NewProjectWizard.name"
+			finalPerspective="org.cfeclipse.ide.ui.Perspective"
+			preferredPerspectives="org.cfeclipse.ide.ui.Perspective"
+			project="true">
+			<description>%NewProjectWizard.description</description>
+		</wizard>
+	</extension>
+	
+	
+	<!-- ============ Navigator extensions ============= -->
+	
+	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<navigatorContent
+			activeByDefault="true"
+			icon="icons/views/Perspective.png"
+			id="org.cfeclipse.ide.ui.NavigatorContent"
+			contentProvider="org.cfeclipse.ide.ui.navigator.CfmlNavigatorContentProvider"
+			labelProvider="org.cfeclipse.ide.ui.navigator.CfmlNavigatorLabelProvider"
+			name="CFML Elements"
+			priority="highest">
+			
+			<!-- 
+			 Priority needs to be highest, because we could be competing with other plugins like JDT or CDT,
+			 which have triggerPoints for any IResource regardless of project nature:
+			 While that doesn't affect the content providers, it affects the common sorter, 
+			 and that's important since we want to sort IResource's.
+			 Also, triggerPoints has to match the children we want to sort, not just the parent of the children, 
+			 so we can't just use expressions.isLangProject 
+			-->
+			<triggerPoints>
+				<or><reference definitionId="org.cfeclipse.ide.core.expressions.isResourceInLangProject"/></or>
+			</triggerPoints>
+			
+			<!-- 
+			 Despite what the documentation currently says, possibleChildren is queried by Navigator service 
+			 to find out whether to use label provider or not, regardless of trigger points. 
+			 Therefore we should ensure possible children only aplies to our IDE projects. 
+			 See: https://bugs.eclipse.org/bugs/show_bug.cgi?id=429572
+			 -->
+			<possibleChildren>
+				<or>
+					<reference definitionId="org.cfeclipse.ide.core.expressions.isResourceInLangProject" />
+					<instanceof value="org.cfeclipse.ide.core.bundle_model.ICfmlNavigatorElement" />
+				</or>
+			</possibleChildren>
+			
+			<commonSorter class="org.cfeclipse.ide.ui.navigator.CfmlNavigatorSorter">
+				<parentExpression>
+					<or>
+						<reference definitionId="org.cfeclipse.ide.core.expressions.isResourceInLangProject"/>
+						<instanceof value="org.cfeclipse.ide.core.bundle_model.ICfmlNavigatorElement" />
+					</or>
+				</parentExpression>
+			</commonSorter>
+			
+			<actionProvider class="org.cfeclipse.ide.ui.navigator.CfmlNavigatorActionProvider"/>
+			
+		</navigatorContent>
+	</extension>
+	
+	<extension point="org.eclipse.ui.navigator.viewer">
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes><contentExtension pattern="org.cfeclipse.ide.ui.NavigatorContent"/></includes>
+		</viewerContentBinding>
+	</extension>
+	
+	
+	<extension point="org.eclipse.compare.contentMergeViewers">
+		<viewer
+	        id="org.cfeclipse.ide.ui.compare.ViewerCreator"
+	        class="org.cfeclipse.ide.ui.editor.CompareViewerCreator"
+	        label="%LangSourceCompare">
+		</viewer>
+		<contentTypeBinding
+			contentMergeViewerId="org.cfeclipse.ide.ui.compare.ViewerCreator"
+			contentTypeId="org.cfeclipse.ide.core.content.source">
+		</contentTypeBinding>
+	</extension>
+	
+	<!-- ============ Launch ============= -->
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage
+			configTypeID="org.cfeclipse.ide.core.LaunchConfigurationType"
+			icon="icons/actions/application_launch.png"
+			id="org.cfeclipse.ide.core.LaunchConfigurationType_Image">
+		</launchConfigurationTypeImage>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup
+			class="org.cfeclipse.ide.ui.launch.CfmlTabGroup"
+			id="org.cfeclipse.ide.ui.CfmlLaunchTabGroup"
+			type="org.cfeclipse.ide.core.LaunchConfigurationType"
+			description="%LangTabGroup.description">
+		</launchConfigurationTabGroup>
+	</extension>
+	
+<extension point="org.eclipse.debug.ui.launchShortcuts">
+	<shortcut
+		class="org.cfeclipse.ide.ui.launch.CfmlLaunchShortcut"
+		id="org.cfeclipse.ide.ui.launch.LaunchShortcut"
+		icon="icons/actions/application_launch.png"
+		label="%LangLaunchShortcut.name"
+		modes="run, debug">
+		
+		<description mode="run" description="%LangLaunchShortcut.runDescription"/>
+		<description mode="debug" description="%LangLaunchShortcut.debugDescription"/>
+		
+		<configurationType id="org.cfeclipse.ide.core.LaunchConfigurationType" />
+		
+		<contextualLaunch>
+			<enablement>
+				<with variable="selection">
+					<count value="1" />
+					<iterate>
+						<or>
+							<adapt type="org.eclipse.core.resources.IProject">
+								<reference definitionId="org.cfeclipse.ide.core.expressions.isNatureProject" />
+							</adapt>
+						</or>
+					</iterate>
+				</with>
+			</enablement>
+		</contextualLaunch>
+	</shortcut>
+</extension>
+	
+</plugin>
