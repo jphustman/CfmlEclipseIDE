@@ -11,29 +11,35 @@
 package org.cfeclipse.ide.core.text;
 
 import org.eclipse.jface.text.rules.IPredicateRule;
+import org.eclipse.jface.text.rules.MultiLineRule;
+import org.eclipse.jface.text.rules.PatternRule;
+import org.eclipse.jface.text.rules.Token;
 
 import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
 import melnorme.lang.ide.core.text.LangPartitionScanner;
-import melnorme.lang.tooling.parser.lexer.CharacterLexingRule;
 import melnorme.utilbox.collections.ArrayList2;
 
 public class CfmlPartitionScanner extends LangPartitionScanner {
-	
+
 	public CfmlPartitionScanner() {
 		super();
 	}
-	
+
 	@Override
 	protected void initPredicateRules(ArrayList2<IPredicateRule> rules) {
 		addStandardRules(rules, 
-			LangPartitionTypes.LINE_COMMENT.getId(), 
-			LangPartitionTypes.BLOCK_COMMENT.getId(), 
-			LangPartitionTypes.DOC_LINE_COMMENT.getId(),
-			LangPartitionTypes.DOC_BLOCK_COMMENT.getId(), 
-			LangPartitionTypes.STRING.getId()
-		);
-		
-		rules.add(new PredicateRule_Adapter(LangPartitionTypes.CHARACTER.getId(), new CharacterLexingRule()));
+				null, 
+				null,
+				null,
+				null, 
+				LangPartitionTypes.STRING.getId()
+			);		
+
+		rules.add(new PatternRule("//", null, new Token(LangPartitionTypes.CF_SCRIPT_COMMENT.getId()), NO_ESCAPE_CHAR, true, true));		
+		rules.add(new PatternRule("<!---", "--->", new Token(LangPartitionTypes.CF_COMMENT.getId()), NO_ESCAPE_CHAR, false, true)); // TODO: See cfeclipse's NestableMultiLineRule
+		rules.add(new PatternRule("<!--", "-->", new Token(LangPartitionTypes.HTML_COMMENT.getId()), NO_ESCAPE_CHAR, false, true));
+		rules.add(new PatternRule("/**", "*/", new Token(LangPartitionTypes.JAVADOC_COMMENT.getId()), NO_ESCAPE_CHAR, false, true)); 
+		rules.add(new PatternRule("/*", "*/", new Token(LangPartitionTypes.CF_SCRIPT_COMMENT_BLOCK.getId()), NO_ESCAPE_CHAR, false, true));		
 	}
-	
+
 }

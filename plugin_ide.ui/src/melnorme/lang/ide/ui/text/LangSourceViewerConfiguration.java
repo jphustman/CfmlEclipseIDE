@@ -34,12 +34,13 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		case CODE: 
 			return new CfmlCodeScanner(tokenStore);
 		
-		case LINE_COMMENT: 
-		case BLOCK_COMMENT: 
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.COMMENTS);
-		
-		case DOC_LINE_COMMENT:
-		case DOC_BLOCK_COMMENT:
+		case CF_SCRIPT_COMMENT_BLOCK: 
+		case CF_SCRIPT_COMMENT:
+		case CF_COMMENT:
+		case HTML_COMMENT:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.COMMENTS);		
+
+		case JAVADOC_COMMENT:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DOC_COMMENTS);
 		
 		case STRING:
@@ -47,6 +48,7 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		
 		case CHARACTER:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CHARACTER);
+
 		}
 		throw assertUnreachable();
 	}

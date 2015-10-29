@@ -8,19 +8,40 @@ import org.cfeclipse.ide.core.text.CfmlPartitionScanner;
 import melnorme.lang.ide.core.text.LangDocumentPartitionerSetup;
 import melnorme.utilbox.misc.ArrayUtil;
 
-
 public class TextSettings_Actual {
 	
 	public static final String PARTITIONING_ID = "org.cfeclipse.Partitioning";
 	
-	public static enum LangPartitionTypes {
-		CODE, 
-		LINE_COMMENT, 
-		BLOCK_COMMENT, 
-		DOC_LINE_COMMENT, 
-		DOC_BLOCK_COMMENT, 
-		STRING, 
-		CHARACTER;
+	public static enum LangPartitionTypes {	
+		CODE,
+		//DOCTYPE,
+		CF_COMMENT,
+		CF_SCRIPT_COMMENT_BLOCK,
+		CF_SCRIPT_COMMENT,
+		JAVADOC_COMMENT,
+		HTML_COMMENT,
+//		CF_SCRIPT,
+//		CF_START_TAG,
+//		CF_START_TAG_BEGIN,
+//		CF_START_TAG_END,
+//		CF_TAG_ATTRIBS,
+//		CF_SET_STATEMENT,
+//		CF_RETURN_STATEMENT,
+//		CF_BOOLEAN_STATEMENT,
+//		CF_END_TAG,
+//		HTML_START_TAG,
+//		HTML_END_TAG,
+//		HTML_START_TAG_BEGIN,
+//		HTML_START_TAG_END,
+//		HTML_TAG_ATTRIBS,
+//		CF_EXPRESSION,
+//		J_SCRIPT,
+//		CSS,
+//		SQL,
+//		TAGLIB_TAG,
+//		UNK_TAG,
+		CHARACTER,
+		STRING;		
 		
 		public String getId() {
 			if(ordinal() == 0) {

@@ -69,10 +69,10 @@ public class EditorSettings_Actual {
 			public ContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
 				return setupSimpleContentAssistant(templateCAP, array(
 					LangPartitionTypes.CODE.getId(), 
-					LangPartitionTypes.LINE_COMMENT.getId(), 
-					LangPartitionTypes.BLOCK_COMMENT.getId(), 
-					LangPartitionTypes.DOC_LINE_COMMENT.getId(),
-					LangPartitionTypes.DOC_BLOCK_COMMENT.getId() 
+					LangPartitionTypes.CF_SCRIPT_COMMENT_BLOCK.getId(), 
+					LangPartitionTypes.CF_SCRIPT_COMMENT.getId(), 
+					LangPartitionTypes.CF_COMMENT.getId(),
+					LangPartitionTypes.HTML_COMMENT.getId() 
 				));
 			}
 		};
