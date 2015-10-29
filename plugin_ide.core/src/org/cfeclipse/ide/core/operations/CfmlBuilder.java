@@ -10,10 +10,15 @@
  *******************************************************************************/
 package org.cfeclipse.ide.core.operations;
 
+import java.util.Map;
+
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 
 import melnorme.lang.ide.core.LangCore;
 import melnorme.lang.ide.core.operations.LangProjectBuilder;
+import melnorme.utilbox.concurrency.OperationCancellation;
 import melnorme.utilbox.core.CommonException;
 
 public class CfmlBuilder extends LangProjectBuilder {
@@ -25,6 +30,14 @@ public class CfmlBuilder extends LangProjectBuilder {
 	protected ProcessBuilder createCleanPB() throws CoreException, CommonException {
 		// TODO: Lang clean command
 		return LangCore.getToolManager().createSDKProcessBuilder(getProject(), "clean");
+	}
+	
+	@Override
+	protected IProject[] doBuild(IProject project, int kind, Map<String, String> args, IProgressMonitor monitor)
+			throws CoreException, OperationCancellation {
+		// TODO Auto-generated method stub
+		//return super.doBuild(project, kind, args, monitor);
+		return null;
 	}
 	
 }

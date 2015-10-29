@@ -13,7 +13,7 @@
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective
 			class="org.cfeclipse.ide.ui.CfmlPerspective"
-			icon="icons/views/Perspective.png"
+			icon="icons/views/Perspective.gif"
 			id="org.cfeclipse.ide.ui.Perspective"
 			name="%LangPerspective.name">
 		</perspective>

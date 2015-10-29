@@ -49,7 +49,7 @@ public class CfmlProjectWizard extends LangNewProjectWizard {
 	protected void configureCreatedProject(ProjectCreator_ForWizard projectCreator, IProgressMonitor monitor)
 			throws CoreException {
 		// TODO: LANG configureCreatedProject
-		IFile mainModule = getProject().getFolder("src").getFile("main.lang");
+		IFile mainModule = getProject().getFolder("src").getFile("index.cfm");
 		projectCreator.createFile(mainModule, "blah", true, monitor);
 	}
 	
