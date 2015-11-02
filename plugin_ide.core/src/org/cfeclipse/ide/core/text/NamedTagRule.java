@@ -15,6 +15,8 @@ import org.eclipse.jface.text.rules.IPredicateRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.Token;
 
+import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
+
 
 /**
  * @author Stephen Milligan
@@ -121,15 +123,15 @@ public class NamedTagRule implements IPredicateRule {
 			if (endSequenceDetected(scanner, tagString)) {
 			    TagData data = null;
 			    if (fStartSequence[1] != '/') {
-			        data = new TagData(fPartitionType + "_begin",tagString.toString(), fMidPartitionType,fPartitionType +"_end", new String(fStartSequence).substring(1) );
+			        data = new TagData(LangPartitionTypes.valueOf(fPartitionType + "_BEGIN").getId(),tagString.toString(), fMidPartitionType,LangPartitionTypes.valueOf(fPartitionType + "_END").getId(), new String(fStartSequence).substring(1) );
 			    } else {
 			        data = new TagData(fPartitionType,tagString.toString(), fMidPartitionType,fPartitionType, new String(fStartSequence).substring(2));
 			    }
-				return new Token(data);
+				//return new Token(data);
+			    return data;
 			}
 		
-		} else {
-			
+		} else {			
 			int c= scanner.read();
 			if (c == fStartSequence[0]) {
 			    tagString.append((char)c);
@@ -137,11 +139,12 @@ public class NamedTagRule implements IPredicateRule {
 					if (endSequenceDetected(scanner, tagString)) {
 					    TagData data = null;
 					    if (fStartSequence[1] != '/') {
-					        data = new TagData(fPartitionType + "_begin",tagString.toString(), fMidPartitionType,fPartitionType +"_end", new String(fStartSequence).substring(1) );
+					        data = new TagData(LangPartitionTypes.valueOf(fPartitionType + "_BEGIN").getId(), tagString.toString(), fMidPartitionType,LangPartitionTypes.valueOf(fPartitionType + "_END").getId(), new String(fStartSequence).substring(1) );
 					    } else {
 					        data = new TagData(fPartitionType,tagString.toString(), fMidPartitionType,fPartitionType, new String(fStartSequence).substring(2));
 					    }
-						return new Token(data);
+						//return new Token(data);
+					    return data;
 					}
 				}
 			}
@@ -200,7 +203,7 @@ public class NamedTagRule implements IPredicateRule {
 			} else if (fEndSequence.length > 0 
 								&& (c == fEndSequence[0] 
 										|| uc == fEndSequence[0])) {
-			    //System.out.println("Found matching first char " + (char)c + " for end sequence " + new String(fEndSequence) + " at offset " + ((CFPartitionScanner)scanner).getOffset());
+			    //System.out.println("Found matching first char " + (char)c + " for end sequence " + new String(fEndSequence) + " at offset " + ((CfmlPartitionScanner)scanner).getOffset());
 				// Check if the specified end sequence has been found.
 				if (!fDblQuotesOpen && !fSnglQuotesOpen) {
 				    if (fEndSequence.length == 1) {
@@ -233,6 +236,7 @@ public class NamedTagRule implements IPredicateRule {
 			int c = scanner.read();
 			int uc = c;
 			tagString.append((char)c);
+			//System.out.println(tagString);
 			if (c > 96 && c <= 122) {
 				uc = c-32;
 			} else if(c>64 && c <= 90) {
@@ -254,15 +258,16 @@ public class NamedTagRule implements IPredicateRule {
 		    return true;
 		}
 		char next = (char)tmp;
+		//System.out.println("Next char" + next + "x");
 		Matcher m = p.matcher(String.valueOf(next));
 		if (!m.matches()) {
-			System.out.println("Named tag found for " + new String(this.fStartSequence) + ", but next char " + next +" is invalid.");
+			//System.out.println("Named tag found for " + new String(this.fStartSequence) + ", but next char " + next +" is invalid.");
 		    for (int j = sequence.length-1; j > 0; j--)
 				scanner.unread();
 			return false;
 		}
 		else {
-			System.out.println("Found tag " + new String(sequence) + " with next char " + next);
+			//System.out.println("Found tag " + new String(sequence) + " with next char " + next);
 		}
 		return true;
 	}
@@ -290,7 +295,7 @@ public class NamedTagRule implements IPredicateRule {
 	 */
 	@Override
 	public IToken getSuccessToken() {
-		System.out.println("getSuccessToken()");
+		//System.out.println("Returning: " + fPartitionType);
 		return new Token(fPartitionType);
 	}
 }

@@ -59,7 +59,7 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		//doctype rule
 		rules.add(new MultiLineRule("<!doctype", ">", doctype));
 		
-		// Handle the if/elsief/set/return tag partitioning
+		// Handle the if/elseif/set/return tag partitioning
 		rules.add(new NamedTagRule("<cfset",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_SET_STATEMENT.getId()));
 		rules.add(new NamedTagRule("<cfif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
 		rules.add(new NamedTagRule("<cfelseif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));

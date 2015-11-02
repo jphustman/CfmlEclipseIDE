@@ -49,4 +49,9 @@ public interface CfmlColorPreferences {
 			new TextStyling(new RGB(127, 0,  85), true, false),
 			new TextStyling(new RGB(210, 0, 140), true, false));
 
+	ThemedTextStylingPreference CFML_TAG = new ThemedTextStylingPreference(PREFIX + "cfml_tag",
+			new TextStyling(new RGB(255, 20, 147), true, false),
+			new TextStyling(new RGB(255, 20, 147), true, false));
+	
+
 }

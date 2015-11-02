@@ -51,7 +51,8 @@ public class EditorSettings_Actual {
 			CfmlColorPreferences.DEFAULT,
 			CfmlColorPreferences.KEYWORDS,
 			CfmlColorPreferences.KEYWORDS_VALUES,
-			CfmlColorPreferences.BUILTIN_FUNCTION
+			CfmlColorPreferences.BUILTIN_FUNCTION,
+			CfmlColorPreferences.CFML_TAG
 		);
 	}
 	
