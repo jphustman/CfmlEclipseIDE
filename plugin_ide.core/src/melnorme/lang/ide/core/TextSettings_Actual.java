@@ -51,7 +51,8 @@ public class TextSettings_Actual {
 		TABLE_TAG_ATTRIBS, 
 		TABLE_START_TAG_END, 
 		CF_SCRIPT_COMMENT, 
-		HTML_COMMENT;
+		HTML_COMMENT,
+		CF_TAG_DATA;
 		
 		public String getId() {
 			if(ordinal() == 0) {

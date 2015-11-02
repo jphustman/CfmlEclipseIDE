@@ -29,6 +29,9 @@
  */
 package org.cfeclipse.ide.core.text;
 
+import org.eclipse.jface.text.rules.IToken;
+
+import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
 
 /**
  * Class description...
@@ -36,7 +39,7 @@ package org.cfeclipse.ide.core.text;
  * @author Stephen Milligan
  * @version $Revision: 1.6 $
  */
-public class TagData {
+public class TagData implements IToken {
 
     /** The type of partition the first portion of the tag represents */
     private final String fStartPartitionType;
@@ -207,7 +210,7 @@ public class TagData {
         }
     }
 
-    /* private final void describeMe() {
+    private final void describeMe() {
         System.out.println("TagData class contains following data:");
         System.out.println("First Partition Type: " + fStartPartitionType); 
         System.out.println("MidPartition Type: " + fMidPartitionType); 
@@ -215,7 +218,32 @@ public class TagData {
         System.out.println("First Partition ends at: " + fStartPartitionEnd);
         System.out.println("Mid Partition ends at: " + fMidPartitionEnd);
         System.out.println("Total length: " + fData.length());
-    } */
+    }
+
+	@Override
+	public boolean isUndefined() {
+		return false;
+	}
+
+	@Override
+	public boolean isWhitespace() {
+		return false;
+	}
+
+	@Override
+	public boolean isEOF() {
+		return false;
+	}
+
+	@Override
+	public boolean isOther() {
+		return false;
+	}
+
+	@Override
+	public Object getData() {
+		return LangPartitionTypes.CF_TAG_DATA.getId();
+	}
 
 }
 

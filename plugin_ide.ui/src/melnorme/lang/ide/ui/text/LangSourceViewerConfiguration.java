@@ -1,11 +1,9 @@
 package melnorme.lang.ide.ui.text;
 
-import static melnorme.utilbox.core.Assert.AssertNamespace.assertUnreachable;
-
 import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
-import org.cfeclipse.ide.ui.text.CfScriptCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
+import org.cfeclipse.ide.ui.text.CfmlTagScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.information.IInformationProvider;
 import org.eclipse.swt.widgets.Display;
@@ -33,18 +31,17 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 			TokenRegistry tokenStore) {
 		switch (partitionType) {
 		case CODE: 
-			return new CfmlCodeScanner(tokenStore);
-			//return new SingleTokenScanner(tokenStore, CfmlColorPreferences.BUILTIN_FUNCTION);
+			return new CfmlCodeScanner(tokenStore);			
 		case JAVADOC_COMMENT:
 		case CF_SCRIPT_COMMENT_BLOCK:
 		case CF_SCRIPT_COMMENT:
-		case CF_TAG_ATTRIBS:
+		case CF_COMMENT:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.COMMENTS);
-		case CF_START_TAG:
-			//return new CfScriptCodeScanner(tokenStore);
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.BUILTIN_FUNCTION);
+		case CF_TAG_DATA:
+			//return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_TAG);
+			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.CFML_TAG);
 		default:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.COMMENTS);
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT);
 		}
 		//throw assertUnreachable();
 	}
