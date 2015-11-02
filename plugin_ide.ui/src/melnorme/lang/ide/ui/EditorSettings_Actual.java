@@ -47,13 +47,11 @@ public class EditorSettings_Actual {
 	public static StylingPreferences getStylingPreferences() {
 		return new StylingPreferences(
 			CfmlColorPreferences.COMMENTS,
-			CfmlColorPreferences.DOC_COMMENTS,
-			CfmlColorPreferences.STRINGS,
-			CfmlColorPreferences.CHARACTER,
-			
+			CfmlColorPreferences.DOC_COMMENTS,		
 			CfmlColorPreferences.DEFAULT,
 			CfmlColorPreferences.KEYWORDS,
-			CfmlColorPreferences.KEYWORDS_VALUES
+			CfmlColorPreferences.KEYWORDS_VALUES,
+			CfmlColorPreferences.BUILTIN_FUNCTION
 		);
 	}
 	

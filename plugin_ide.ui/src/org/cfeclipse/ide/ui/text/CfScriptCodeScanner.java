@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.cfeclipse.ide.ui.text;
 
-import org.cfeclipse.tooling.parser.lexer.CfmlWordLexerRule;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
-import org.eclipse.jface.text.rules.Token;
+import org.eclipse.jface.text.rules.WhitespaceRule;
+import org.eclipse.jface.text.rules.WordRule;
 
 import melnorme.lang.ide.ui.text.AbstractLangScanner;
 import melnorme.lang.ide.ui.text.coloring.TokenRegistry;
@@ -22,28 +22,33 @@ import melnorme.utilbox.collections.ArrayList2;
 /**
  * Sample CFML code scanner
  */
-public class CfmlCodeScanner extends AbstractLangScanner {
+public class CfScriptCodeScanner extends AbstractLangScanner {
 	
-	public CfmlCodeScanner(TokenRegistry tokenStore) {
+	public CfScriptCodeScanner(TokenRegistry tokenStore) {
 		super(tokenStore);
 	}
 	
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
-		IToken defaultToken = getToken(CfmlColorPreferences.DEFAULT);
-		setDefaultReturnToken(defaultToken);
 		
-		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(
-			Token.WHITESPACE, 
-			defaultToken,
-			defaultToken,
-			defaultToken,
-			defaultToken,
-			defaultToken,
-			defaultToken
-		);
+		IToken tkOther = getToken(CfmlColorPreferences.DEFAULT);
+		IToken tkKeywords = getToken(CfmlColorPreferences.KEYWORDS);
+		IToken tkKeywordValues = getToken(CfmlColorPreferences.KEYWORDS_VALUES);
 		
-		rules.add(new LexingRule_RuleAdapter(codeLexerRule));
+		// Add generic whitespace rule.
+		rules.add(new WhitespaceRule(new LangWhitespaceDetector()));
+		
+		WordRule wordRule = new WordRule(new JavaWordDetector(), tkOther);
+		
+		wordRule.addWord("function",  tkKeywords);
+		wordRule.addWord("null", tkKeywordValues);
+		wordRule.addWord("true", tkKeywordValues);
+		wordRule.addWord("false", tkKeywordValues);
+		
+		
+		rules.add(wordRule);
+		
+		setDefaultReturnToken(tkOther);
 	}
 	
 }

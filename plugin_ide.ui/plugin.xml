@@ -37,7 +37,7 @@
 		 class="org.cfeclipse.ide.ui.editor.CfmlEditor"
 		 contributorClass="org.cfeclipse.ide.ui.editor.CfmlEditorActionContributor"
 		 default="true"
-		 icon="icons/views/SourceEditor.png"
+		 icon="icons/views/cf_editor.gif"
 		 id="org.cfeclipse.ide.ui.Editors.SourceEditor"
 		 name="%LangEditor.name">
 			<contentTypeBinding contentTypeId="org.cfeclipse.ide.core.content.source" />

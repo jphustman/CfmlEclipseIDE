@@ -13,5 +13,5 @@ package org.cfeclipse.ide.core.text;
 import melnorme.lang.ide.core.text.LangDocumentPartitionerSetup;
 
 public class CfmlDocumentSetupParticipant extends LangDocumentPartitionerSetup {
-	
+
 }
