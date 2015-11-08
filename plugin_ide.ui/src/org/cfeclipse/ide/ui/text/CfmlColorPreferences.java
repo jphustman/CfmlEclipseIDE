@@ -19,39 +19,67 @@ public interface CfmlColorPreferences {
 	
 	String PREFIX = "editor.coloring."; 
 	
-	ThemedTextStylingPreference DEFAULT = new ThemedTextStylingPreference(PREFIX + "default",
+	ThemedTextStylingPreference DEFAULT_TEXT = new ThemedTextStylingPreference(PREFIX + "default_text",
 		new TextStyling(new RGB(  0,   0,   0), false, false),
 		new TextStyling(new RGB(230, 230, 230), false, false));
-	ThemedTextStylingPreference KEYWORDS = new ThemedTextStylingPreference(PREFIX + "keyword",
-		new TextStyling(new RGB(127, 0,  85), true, false),
-		new TextStyling(new RGB(210, 0, 140), true, false));
-	ThemedTextStylingPreference KEYWORDS_VALUES = new ThemedTextStylingPreference(PREFIX + "keyword_literals",
-		new TextStyling(new RGB(127, 0,  85), false, false),
-		new TextStyling(new RGB(210, 0, 140), false, false));
-	
-	/*
-	ThemedTextStylingPreference STRINGS = new ThemedTextStylingPreference(PREFIX + LangPartitionTypes.STRING,
-		new TextStyling(new RGB(113, 140, 0), false, false),
-		new TextStyling(new RGB(113, 140, 0), false, false));
-	ThemedTextStylingPreference = new ThemedTextStylingPreference(PREFIX + LangPartitionTypes.CHARACTER,
-		new TextStyling(new RGB(113, 140, 0), false, false),
-		new TextStyling(new RGB(113, 140, 0), false, false));
-	*/		
-	
-	ThemedTextStylingPreference COMMENTS = new ThemedTextStylingPreference(PREFIX + "comment",
-		new TextStyling(new RGB(100, 100, 100), false, false),
-		new TextStyling(new RGB(144, 144, 144), false, false));
-	ThemedTextStylingPreference DOC_COMMENTS = new ThemedTextStylingPreference(PREFIX + "doc_comment",
-		new TextStyling(new RGB( 80, 100, 150), false, false),
-		new TextStyling(new RGB(110, 135, 205), false, false));
-
-	ThemedTextStylingPreference BUILTIN_FUNCTION = new ThemedTextStylingPreference(PREFIX + "builtin_function",
-			new TextStyling(new RGB(127, 0,  85), true, false),
-			new TextStyling(new RGB(210, 0, 140), true, false));
-
-	ThemedTextStylingPreference CFML_TAG = new ThemedTextStylingPreference(PREFIX + "cfml_tag",
-			new TextStyling(new RGB(255, 20, 147), true, false),
-			new TextStyling(new RGB(255, 20, 147), true, false));
-	
-
+	ThemedTextStylingPreference CFSTRING = new ThemedTextStylingPreference(PREFIX + "cfstring",
+		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(0, 0, 255), false, false));
+	ThemedTextStylingPreference CFTAG = new ThemedTextStylingPreference(PREFIX + "cftag",
+		new TextStyling(new RGB(128,0,0), false, false),
+		new TextStyling(new RGB(128,0,0), false, false));	
+	ThemedTextStylingPreference TAGLIB_TAG = new ThemedTextStylingPreference(PREFIX + "taglib_tag",
+		new TextStyling(new RGB(60, 60, 170), false, false),
+		new TextStyling(new RGB(60, 60, 170), false, false));	
+	ThemedTextStylingPreference CFKEYWORD = new ThemedTextStylingPreference(PREFIX + "cfkeyword",
+		new TextStyling(new RGB(60, 197, 255), true, false),
+		new TextStyling(new RGB(60, 197, 255), true, false));
+	ThemedTextStylingPreference CFOPERATOR = new ThemedTextStylingPreference(PREFIX + "cfoperator",
+		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(0, 0, 255), false, false));
+	ThemedTextStylingPreference CFNUMBER = new ThemedTextStylingPreference(PREFIX + "cfnumber",
+		new TextStyling(new RGB(255, 10, 10), false, false),
+		new TextStyling(new RGB(255, 10, 10), false, false));
+	ThemedTextStylingPreference CFBUILTINSCOPE = new ThemedTextStylingPreference(PREFIX + "cfbuiltinscope",
+		new TextStyling(new RGB(204, 0, 0), false, false),
+		new TextStyling(new RGB(204, 0, 0), false, false));
+	ThemedTextStylingPreference CFSCOPE = new ThemedTextStylingPreference(PREFIX + "cfscope",
+		new TextStyling(new RGB(204, 0, 0), false, false),
+		new TextStyling(new RGB(204, 0, 0), false, false));	
+	ThemedTextStylingPreference CFCOMMENT = new ThemedTextStylingPreference(PREFIX + "cfcomment",
+		new TextStyling(new RGB(128, 128, 128), false, false),
+		new TextStyling(new RGB(128, 128, 128), false, false));
+	ThemedTextStylingPreference BACKGROUND_CFCOMMENT = new ThemedTextStylingPreference(PREFIX + "background_cfcomment",
+		new TextStyling(new RGB(255, 255, 255), false, false),
+		new TextStyling(new RGB(255, 255, 255), false, false));
+	ThemedTextStylingPreference JAVADOC = new ThemedTextStylingPreference(PREFIX + "javadoc",
+		new TextStyling(new RGB(42, 42, 42), false, false),
+		new TextStyling(new RGB(42, 42, 42), false, false));
+	ThemedTextStylingPreference BACKGROUND_JAVADOC = new ThemedTextStylingPreference(PREFIX + "background_javadoc",
+		new TextStyling(new RGB(255, 255, 255), false, false),
+		new TextStyling(new RGB(255, 255, 255), false, false));
+	ThemedTextStylingPreference CFSCRIPT_TEXT = new ThemedTextStylingPreference(PREFIX + "cfscript_text",
+		new TextStyling(new RGB(0, 0, 0), false, false),
+		new TextStyling(new RGB(0, 0, 0), false, false));
+	ThemedTextStylingPreference CFSCRIPT_KEYWORD = new ThemedTextStylingPreference(PREFIX + "cfscript_keyword",
+		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(0, 0, 255), false, false));	
+	ThemedTextStylingPreference CFSCRIPT_FUNCTION = new ThemedTextStylingPreference(PREFIX + "cfscript_function",
+		new TextStyling(new RGB(0, 112, 0), false, false),
+		new TextStyling(new RGB(0, 112, 0), false, false));
+	ThemedTextStylingPreference SQL_TEXT = new ThemedTextStylingPreference(PREFIX + "sql_text",
+		new TextStyling(new RGB(0, 0, 0), false, false),
+		new TextStyling(new RGB(0, 0, 0), false, false));		
+	ThemedTextStylingPreference SQL_KEYWORD = new ThemedTextStylingPreference(PREFIX + "sql_keyword",
+		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(0, 0, 255), false, false));		
+	ThemedTextStylingPreference SQL_STRING = new ThemedTextStylingPreference(PREFIX + "sql_string",
+		new TextStyling(new RGB(255, 0, 0), false, false),
+		new TextStyling(new RGB(255, 0, 0), false, false));		
+	ThemedTextStylingPreference SQL_OPERATOR = new ThemedTextStylingPreference(PREFIX + "sql_operator",
+		new TextStyling(new RGB(128, 128, 128), false, false),
+		new TextStyling(new RGB(128, 128, 128), false, false));		
+	ThemedTextStylingPreference SQL_COMMENT = new ThemedTextStylingPreference(PREFIX + "sql_comment",
+		new TextStyling(new RGB(0, 128, 128), false, false),
+		new TextStyling(new RGB(0, 128, 128), false, false));			
 }

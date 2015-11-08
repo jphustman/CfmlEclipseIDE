@@ -46,19 +46,26 @@ public class EditorSettings_Actual {
 	
 	public static StylingPreferences getStylingPreferences() {
 		return new StylingPreferences(
-			CfmlColorPreferences.COMMENTS,
-			CfmlColorPreferences.DOC_COMMENTS,		
-			CfmlColorPreferences.DEFAULT,
-			CfmlColorPreferences.KEYWORDS,
-			CfmlColorPreferences.KEYWORDS_VALUES,
-			CfmlColorPreferences.BUILTIN_FUNCTION,
-			CfmlColorPreferences.CFML_TAG
+			CfmlColorPreferences.DEFAULT_TEXT,				
+			CfmlColorPreferences.BACKGROUND_CFCOMMENT,
+			CfmlColorPreferences.BACKGROUND_JAVADOC,		
+			CfmlColorPreferences.CFBUILTINSCOPE,
+			CfmlColorPreferences.CFCOMMENT,
+			CfmlColorPreferences.CFKEYWORD,
+			CfmlColorPreferences.CFOPERATOR,
+			CfmlColorPreferences.CFNUMBER,
+			CfmlColorPreferences.CFSCOPE,
+			CfmlColorPreferences.CFSCRIPT_FUNCTION,
+			CfmlColorPreferences.CFSCRIPT_KEYWORD,
+			CfmlColorPreferences.CFSCRIPT_TEXT,
+			CfmlColorPreferences.CFSTRING,
+			CfmlColorPreferences.CFTAG
 		);
 	}
 	
 	public static final String TEMPLATE_CONTEXT_TYPE_ID = LangUIPlugin.PLUGIN_ID + ".TemplateContextType";
 	
-	public static final ThemedTextStylingPreference CODE_DEFAULT_COLOR = CfmlColorPreferences.DEFAULT;
+	public static final ThemedTextStylingPreference CODE_DEFAULT_COLOR = CfmlColorPreferences.DEFAULT_TEXT;
 	
 	public static SourceViewerConfiguration createTemplateEditorSourceViewerConfiguration(
 			IPreferenceStore store, final IContentAssistProcessor templateCAP) {

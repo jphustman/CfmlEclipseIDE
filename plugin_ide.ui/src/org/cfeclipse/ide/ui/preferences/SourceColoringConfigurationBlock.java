@@ -28,16 +28,18 @@ public class SourceColoringConfigurationBlock extends AbstractSourceColoringConf
 	protected LabeledTreeElement[] createTreeElements() {
 		return array(
 			new SourceColoringCategory("Source", array(
-				new SourceColoringElement("Default", CfmlColorPreferences.DEFAULT),
-				new SourceColoringElement("Keywords", CfmlColorPreferences.KEYWORDS),
-				new SourceColoringElement("Keywords - Literals", CfmlColorPreferences.KEYWORDS_VALUES),
+				new SourceColoringElement("Default", CfmlColorPreferences.DEFAULT_TEXT),
+				new SourceColoringElement("Keywords", CfmlColorPreferences.CFKEYWORD),
+				new SourceColoringElement("Operators", CfmlColorPreferences.CFOPERATOR),
+				new SourceColoringElement("Tags", CfmlColorPreferences.CFTAG)
+				//new SourceColoringElement("Keywords - Literals", CfmlColorPreferences.KEYWORDS_VALUES),
 				//new SourceColoringElement("Strings", CfmlColorPreferences.STRINGS),
 				//new SourceColoringElement("Characters", CfmlColorPreferences.CHARACTER),
-				new SourceColoringElement("Builtin Functions", CfmlColorPreferences.BUILTIN_FUNCTION)
+				//new SourceColoringElement("Builtin Functions", CfmlColorPreferences.BUILTIN_FUNCTION)
 			)),
 			new SourceColoringCategory("Comments", array(
-				new SourceColoringElement("Comment", CfmlColorPreferences.COMMENTS),
-				new SourceColoringElement("Doc Comment", CfmlColorPreferences.DOC_COMMENTS)
+				new SourceColoringElement("Comment", CfmlColorPreferences.CFCOMMENT),
+				new SourceColoringElement("Doc Comment", CfmlColorPreferences.JAVADOC)
 			))
 		);
 	}
