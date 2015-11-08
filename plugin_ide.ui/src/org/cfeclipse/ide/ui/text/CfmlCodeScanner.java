@@ -13,10 +13,8 @@ package org.cfeclipse.ide.ui.text;
 import org.cfeclipse.tooling.parser.lexer.CfmlWordLexerRule;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
-import org.eclipse.jface.text.rules.PatternRule;
 import org.eclipse.jface.text.rules.Token;
 
-import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
 import melnorme.lang.ide.ui.text.AbstractLangScanner;
 import melnorme.lang.ide.ui.text.coloring.TokenRegistry;
 import melnorme.utilbox.collections.ArrayList2;
@@ -32,7 +30,7 @@ public class CfmlCodeScanner extends AbstractLangScanner {
 	
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
-		IToken defaultToken = getToken(CfmlColorPreferences.DEFAULT);
+		IToken defaultToken = getToken(CfmlColorPreferences.DEFAULT_TEXT);
 		setDefaultReturnToken(defaultToken);
 		
 		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(

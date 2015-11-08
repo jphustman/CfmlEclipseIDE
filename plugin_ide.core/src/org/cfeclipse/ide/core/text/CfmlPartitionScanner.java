@@ -63,7 +63,16 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		rules.add(new NamedTagRule("<cfset",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_SET_STATEMENT.getId()));
 		rules.add(new NamedTagRule("<cfif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
 		rules.add(new NamedTagRule("<cfelseif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
-		rules.add(new NamedTagRule("<cfreturn",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_RETURN_STATEMENT.getId()));		
+		rules.add(new NamedTagRule("<cfreturn",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_RETURN_STATEMENT.getId()));
+		
+		//SyntaxDictionary sd = DictionaryManager.getDictionary(DictionaryManager.CFDIC);
+		DictionaryPreferences dp = new DictionaryPreferences();
+		dp.setDictionaryDir("D:/AMyers/Documents/projects/cfml.dictionary/src/main/resources/dictionary");
+		DictionaryManager.initDictionaries(dp);
+		CFSyntaxDictionary cfd = (CFSyntaxDictionary)DictionaryManager.getDictionary(DictionaryManager.CFDIC_KEY);
+		
+		
+		
 	}
 	
 	/**

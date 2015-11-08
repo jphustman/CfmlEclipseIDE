@@ -32,16 +32,23 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		switch (partitionType) {
 		case CODE: 
 			return new CfmlCodeScanner(tokenStore);			
+		case CFSTRING:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFSTRING);
 		case JAVADOC_COMMENT:
 		case CF_SCRIPT_COMMENT_BLOCK:
 		case CF_SCRIPT_COMMENT:
 		case CF_COMMENT:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.COMMENTS);
-		case CF_TAG_DATA:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFCOMMENT);
+		case CF_START_TAG:
+		case CF_END_TAG:
+		case CF_START_TAG_BEGIN:
+		case CF_TAG_ATTRIBS:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFOPERATOR);
+		case CF_TAG_DATA:		
 			//return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_TAG);
-			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.CFML_TAG);
+			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		default:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT);
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}
 		//throw assertUnreachable();
 	}
