@@ -81,5 +81,9 @@ public interface CfmlColorPreferences {
 		new TextStyling(new RGB(128, 128, 128), false, false));		
 	ThemedTextStylingPreference SQL_COMMENT = new ThemedTextStylingPreference(PREFIX + "sql_comment",
 		new TextStyling(new RGB(0, 128, 128), false, false),
-		new TextStyling(new RGB(0, 128, 128), false, false));			
+		new TextStyling(new RGB(0, 128, 128), false, false));
+	ThemedTextStylingPreference HTML_TAG = new ThemedTextStylingPreference(PREFIX + "html_tag",
+			new TextStyling(new RGB(0, 0, 128), false, false),
+			new TextStyling(new RGB(0, 0, 128), false, false));			
+	
 }

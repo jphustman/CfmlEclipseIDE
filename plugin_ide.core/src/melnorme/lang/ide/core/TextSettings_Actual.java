@@ -54,7 +54,8 @@ public class TextSettings_Actual {
 		HTML_COMMENT,
 		CF_TAG_DATA,
 		CFNUMBER,
-		CFSTRING;
+		CFSTRING,
+		HTML_TAG;
 		
 		public String getId() {
 			if(ordinal() == 0) {

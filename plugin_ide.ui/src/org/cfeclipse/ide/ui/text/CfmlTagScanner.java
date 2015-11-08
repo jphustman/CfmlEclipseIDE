@@ -6,12 +6,11 @@ import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
 import org.eclipse.jface.text.rules.NumberRule;
-import org.eclipse.jface.text.rules.Token;
+import org.eclipse.jface.text.rules.RuleBasedScanner;
 
 import cfml.dictionary.DictionaryManager;
 import cfml.dictionary.preferences.DictionaryPreferences;
 import cfml.dictionary.syntax.CFSyntaxDictionary;
-import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
 import melnorme.lang.ide.ui.text.AbstractLangScanner;
 import melnorme.lang.ide.ui.text.coloring.ThemedTextStylingPreference;
 import melnorme.lang.ide.ui.text.coloring.TokenRegistry;
@@ -26,8 +25,8 @@ public class CfmlTagScanner extends AbstractLangScanner {
 	
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
-		IToken stringToken = getToken(CfmlColorPreferences.CFSTRING);//new Token(LangPartitionTypes.CFSTRING.getId());
-		IToken numberToken = getToken(CfmlColorPreferences.CFNUMBER);//new Token(LangPartitionTypes.CFNUMBER.getId());
+		IToken stringToken = getToken(CfmlColorPreferences.CFSTRING);
+		IToken numberToken = getToken(CfmlColorPreferences.CFNUMBER);
 		IToken tagToken = getToken(CfmlColorPreferences.CFTAG);
 		IToken keywordToken = getToken(CfmlColorPreferences.CFOPERATOR);
 		
@@ -54,7 +53,6 @@ public class CfmlTagScanner extends AbstractLangScanner {
 		PredicateWordRule keywordRule = new PredicateWordRule(keywordDetector, tagToken, allkeys, keywordToken);
 		keywordRule.setCaseSensitive(false);		
 		rules.add(keywordRule);
-
 	}		
 	
 }
