@@ -18,12 +18,12 @@ Require-Bundle: org.cfeclipse.tooling;visibility:=reexport,
  org.eclipse.jface.text;bundle-version="3.9.1",
  org.eclipse.jface;bundle-version="3.9.1",
  org.eclipse.debug.core;bundle-version="3.6.0"
-Bundle-ClassPath: .
-Export-Package: org.cfeclipse.ide.core,
- org.cfeclipse.ide.core.bundle_model,
- org.cfeclipse.ide.core.launch,
- org.cfeclipse.ide.core.operations,
- org.cfeclipse.ide.core.text,
+Bundle-ClassPath: .,
+ lib/dictionary-0.0.1-SNAPSHOT.jar,
+ lib/jdom-2.0.6.jar
+Export-Package: cfml.dictionary,
+ cfml.dictionary.preferences,
+ cfml.dictionary.syntax,
  melnorme.lang.ide.core,
  melnorme.lang.ide.core.engine,
  melnorme.lang.ide.core.launch,
@@ -37,5 +37,10 @@ Export-Package: org.cfeclipse.ide.core,
  melnorme.lang.ide.core.utils.operation,
  melnorme.lang.ide.core.utils.prefs,
  melnorme.lang.ide.core.utils.process,
- melnorme.lang.ide.launching
+ melnorme.lang.ide.launching,
+ org.cfeclipse.ide.core,
+ org.cfeclipse.ide.core.bundle_model,
+ org.cfeclipse.ide.core.launch,
+ org.cfeclipse.ide.core.operations,
+ org.cfeclipse.ide.core.text
 Eclipse-ExtensibleAPI: true

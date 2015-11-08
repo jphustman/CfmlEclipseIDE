@@ -4,6 +4,7 @@ import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
 import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
 import org.cfeclipse.ide.ui.text.CfmlTagScanner;
+import org.cfeclipse.ide.ui.text.HtmlTagScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.information.IInformationProvider;
 import org.eclipse.swt.widgets.Display;
@@ -39,14 +40,15 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		case CF_SCRIPT_COMMENT:
 		case CF_COMMENT:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFCOMMENT);
-		case CF_START_TAG:
-		case CF_END_TAG:
+		case HTM_START_TAG_BEGIN:
+		case HTM_START_TAG_END:
+		case HTM_END_TAG:
+			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
 		case CF_START_TAG_BEGIN:
-		case CF_TAG_ATTRIBS:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFOPERATOR);
-		case CF_TAG_DATA:		
-			//return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_TAG);
+		case CF_START_TAG_END:
+		case CF_END_TAG:
 			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
+		
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}

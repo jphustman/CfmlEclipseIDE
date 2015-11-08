@@ -59,7 +59,8 @@ public class EditorSettings_Actual {
 			CfmlColorPreferences.CFSCRIPT_KEYWORD,
 			CfmlColorPreferences.CFSCRIPT_TEXT,
 			CfmlColorPreferences.CFSTRING,
-			CfmlColorPreferences.CFTAG
+			CfmlColorPreferences.CFTAG,
+			CfmlColorPreferences.HTML_TAG
 		);
 	}
 	
