@@ -3,7 +3,10 @@ package melnorme.lang.ide.ui.text;
 import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
 import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
-import org.cfeclipse.ide.ui.text.CfmlTagScanner;
+import org.cfeclipse.ide.ui.text.CfmlEndTagScanner;
+import org.cfeclipse.ide.ui.text.CfmlSetTagScanner;
+import org.cfeclipse.ide.ui.text.CfmlStartTagBeginScanner;
+import org.cfeclipse.ide.ui.text.CfmlStartTagEndScanner;
 import org.cfeclipse.ide.ui.text.HtmlTagScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.information.IInformationProvider;
@@ -44,11 +47,14 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		case HTM_START_TAG_END:
 		case HTM_END_TAG:
 			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
-		case CF_START_TAG_BEGIN:
 		case CF_START_TAG_END:
+			return new CfmlStartTagEndScanner(tokenStore);
 		case CF_END_TAG:
-			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
-		
+			return new CfmlEndTagScanner(tokenStore);
+		case CF_START_TAG_BEGIN:
+			return new CfmlStartTagBeginScanner(tokenStore);
+		case CF_SET_STATEMENT:
+			return new CfmlSetTagScanner(tokenStore);		
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}

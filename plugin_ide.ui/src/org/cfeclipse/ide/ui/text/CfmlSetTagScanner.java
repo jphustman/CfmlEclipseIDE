@@ -1,26 +1,19 @@
 package org.cfeclipse.ide.ui.text;
 
-import java.util.Set;
-
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
 import org.eclipse.jface.text.rules.NumberRule;
-import org.eclipse.jface.text.rules.RuleBasedScanner;
 
-import cfml.dictionary.DictionaryManager;
-import cfml.dictionary.preferences.DictionaryPreferences;
-import cfml.dictionary.syntax.CFSyntaxDictionary;
 import melnorme.lang.ide.ui.text.AbstractLangScanner;
-import melnorme.lang.ide.ui.text.coloring.ThemedTextStylingPreference;
 import melnorme.lang.ide.ui.text.coloring.TokenRegistry;
 import melnorme.utilbox.collections.ArrayList2;
 
-public class CfmlTagScanner extends AbstractLangScanner {
+public class CfmlSetTagScanner extends AbstractLangScanner {
 	
-	public CfmlTagScanner(TokenRegistry tokenStore, ThemedTextStylingPreference coloringItem) {
+	public CfmlSetTagScanner(TokenRegistry tokenStore) {
 		super(tokenStore);
-		setDefaultReturnToken(getToken(coloringItem));
+		//setDefaultReturnToken(getToken(coloringItem));
 	}
 	
 	@Override
@@ -30,10 +23,12 @@ public class CfmlTagScanner extends AbstractLangScanner {
 		IToken tagToken = getToken(CfmlColorPreferences.CFTAG);
 		IToken keywordToken = getToken(CfmlColorPreferences.CFOPERATOR);
 		
-		rules.add(new MultiLineRule("<cfset", " ", tagToken));
-		rules.add(new MultiLineRule("'","'",stringToken));
+		rules.add(new MultiLineRule("cfset", " ", tagToken));
+		rules.add(new MultiLineRule("var", " ", keywordToken));
+		rules.add(new MultiLineRule("\"", "\"", stringToken));
+		rules.add(new MultiLineRule("'", "'", stringToken));
 		rules.add(new NumberRule(numberToken));		
-		
+		/*
 		//TODO: Get the dictionary from the project or overall settings, rather than just picking the default
 		DictionaryPreferences dp = new DictionaryPreferences();
 		dp.setDictionaryDir("D:/AMyers/Documents/projects/cfml.dictionary/src/main/resources/dictionary");
@@ -53,6 +48,7 @@ public class CfmlTagScanner extends AbstractLangScanner {
 		PredicateWordRule keywordRule = new PredicateWordRule(keywordDetector, tagToken, allkeys, keywordToken);
 		keywordRule.setCaseSensitive(false);		
 		rules.add(keywordRule);
+		*/
 	}
 	
 }

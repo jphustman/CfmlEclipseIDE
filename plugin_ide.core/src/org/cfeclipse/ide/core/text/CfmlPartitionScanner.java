@@ -43,7 +43,8 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		IToken javaDocComment = new Token(LangPartitionTypes.JAVADOC_COMMENT.getId());
 		IToken htmComment 	= new Token(LangPartitionTypes.HTM_COMMENT.getId());
 		IToken taglibtag		= new Token(LangPartitionTypes.TAGLIB_TAG.getId());
-		IToken unktag		= new Token(LangPartitionTypes.UNK_TAG.getId());		
+		IToken unktag		= new Token(LangPartitionTypes.UNK_TAG.getId());
+		IToken cfStartTag 	= new Token(LangPartitionTypes.CF_START_TAG_BEGIN.getId());
 		
 		//the order here is important. It should go from specific to
 		//general as the rules are applied in order
@@ -66,10 +67,12 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		rules.add(new MultiLineRule("<!doctype", ">", doctype));
 		
 		// Handle the if/elseif/set/return tag partitioning
-		rules.add(new NamedTagRule("<cfset",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_SET_STATEMENT.getId()));
-		rules.add(new NamedTagRule("<cfif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
-		rules.add(new NamedTagRule("<cfelseif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
-		rules.add(new NamedTagRule("<cfreturn",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_RETURN_STATEMENT.getId()));
+		//rules.add(new NamedTagRule("<cfset",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_SET_STATEMENT.getId()));
+		//rules.add(new MultiLineRule("<cfset",">", cfStartTag, (char) 0, true));
+		rules.add(new MultiLineRule("<cfset", ">", new Token(LangPartitionTypes.CF_SET_STATEMENT.getId())));
+		//rules.add(new NamedTagRule("<cfif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
+		//rules.add(new NamedTagRule("<cfelseif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
+		//rules.add(new NamedTagRule("<cfreturn",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_RETURN_STATEMENT.getId()));
 		
 		//SyntaxDictionary sd = DictionaryManager.getDictionary(DictionaryManager.CFDIC);
 		DictionaryPreferences dp = new DictionaryPreferences();
