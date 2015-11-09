@@ -22,12 +22,16 @@ public interface CfmlColorPreferences {
 	ThemedTextStylingPreference DEFAULT_TEXT = new ThemedTextStylingPreference(PREFIX + "default_text",
 		new TextStyling(new RGB(  0,   0,   0), false, false),
 		new TextStyling(new RGB(230, 230, 230), false, false));
-	ThemedTextStylingPreference CFSTRING = new ThemedTextStylingPreference(PREFIX + "cfstring",
+	ThemedTextStylingPreference CF_STRING = new ThemedTextStylingPreference(PREFIX + "cf_string",
 		new TextStyling(new RGB(0, 0, 255), false, false),
 		new TextStyling(new RGB(0, 0, 255), false, false));
-	ThemedTextStylingPreference CFTAG = new ThemedTextStylingPreference(PREFIX + "cftag",
+	ThemedTextStylingPreference CF_TAG = new ThemedTextStylingPreference(PREFIX + "cf_tag",
 		new TextStyling(new RGB(128,0,0), false, false),
 		new TextStyling(new RGB(128,0,0), false, false));	
+	ThemedTextStylingPreference CF_TAG_ATTRIBUTE = new ThemedTextStylingPreference(PREFIX + "cf_tag_attribute",
+			new TextStyling(new RGB(0,0,255), false, false),
+			new TextStyling(new RGB(0,0,255), false, false));	
+	
 	ThemedTextStylingPreference TAGLIB_TAG = new ThemedTextStylingPreference(PREFIX + "taglib_tag",
 		new TextStyling(new RGB(60, 60, 170), false, false),
 		new TextStyling(new RGB(60, 60, 170), false, false));	

@@ -1,5 +1,6 @@
 package org.cfeclipse.ide.ui.text;
 
+import org.cfeclipse.tooling.parser.lexer.CfmlTagNameRule;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
@@ -18,12 +19,12 @@ public class CfmlSetTagScanner extends AbstractLangScanner {
 	
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
-		IToken stringToken = getToken(CfmlColorPreferences.CFSTRING);
+		IToken stringToken = getToken(CfmlColorPreferences.CF_STRING);
 		IToken numberToken = getToken(CfmlColorPreferences.CFNUMBER);
-		IToken tagToken = getToken(CfmlColorPreferences.CFTAG);
+		IToken tagToken = getToken(CfmlColorPreferences.CF_TAG);
 		IToken keywordToken = getToken(CfmlColorPreferences.CFOPERATOR);
-		
-		rules.add(new MultiLineRule("cfset", " ", tagToken));
+
+		//rules.add(new MultiLineRule("cfset", " ", tagToken));
 		rules.add(new MultiLineRule("var", " ", keywordToken));
 		rules.add(new MultiLineRule("\"", "\"", stringToken));
 		rules.add(new MultiLineRule("'", "'", stringToken));
