@@ -34,27 +34,31 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 	protected AbstractLangScanner createScannerFor(Display current, LangPartitionTypes partitionType, 
 			TokenRegistry tokenStore) {
 		switch (partitionType) {
-		case CODE: 
-			return new CfmlCodeScanner(tokenStore);			
-		case CFSTRING:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFSTRING);
-		case JAVADOC_COMMENT:
-		case CF_SCRIPT_COMMENT_BLOCK:
-		case CF_SCRIPT_COMMENT:
-		case CF_COMMENT:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFCOMMENT);
-		case HTM_START_TAG_BEGIN:
-		case HTM_START_TAG_END:
-		case HTM_END_TAG:
-			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
-		case CF_START_TAG_END:
-			return new CfmlStartTagEndScanner(tokenStore);
-		case CF_END_TAG:
-			return new CfmlEndTagScanner(tokenStore);
-		case CF_START_TAG_BEGIN:
-			return new CfmlStartTagBeginScanner(tokenStore);
-		case CF_SET_STATEMENT:
-			return new CfmlSetTagScanner(tokenStore);		
+//		case CODE: 
+//			return new CfmlCodeScanner(tokenStore);			
+//		case CFSTRING:
+//			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFSTRING);
+//		case JAVADOC_COMMENT:
+//		case CF_SCRIPT_COMMENT_BLOCK:
+//		case CF_SCRIPT_COMMENT:
+//		case CF_COMMENT:
+//			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFCOMMENT);
+//		case HTM_START_TAG_BEGIN:
+//		case HTM_START_TAG_END:
+//		case HTM_END_TAG:
+//			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
+//		case CF_START_TAG_END:
+//			return new CfmlStartTagEndScanner(tokenStore);
+//		case CF_END_TAG:
+//			return new CfmlEndTagScanner(tokenStore);
+//		case CF_START_TAG_BEGIN:
+//			return new CfmlStartTagBeginScanner(tokenStore);
+//		case CF_SET_STATEMENT:
+//			return new CfmlSetTagScanner(tokenStore);	
+		case CF_START_TAG:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CF_TAG);
+		case CF_TAG_ATTRIBS:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CF_TAG_ATTRIBUTE);
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}
