@@ -13,6 +13,8 @@ package org.cfeclipse.ide.core.text;
 import org.cfeclipse.tooling.parser.lexer.CfmlAttributeNameRule;
 import org.cfeclipse.tooling.parser.lexer.CfmlTagNameRule;
 import org.eclipse.jface.text.rules.IPredicateRule;
+import org.eclipse.jface.text.rules.MultiLineRule;
+import org.eclipse.jface.text.rules.Token;
 
 import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
 import melnorme.lang.ide.core.text.LangPartitionScanner;
@@ -29,8 +31,7 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		
 		//the order here is important. It should go from specific to
 		//general as the rules are applied in order
-		rules.add(new PredicateRule_Adapter(LangPartitionTypes.CF_START_TAG.getId(), new CfmlTagNameRule()));
-		rules.add(new PredicateRule_Adapter(LangPartitionTypes.CF_TAG_ATTRIBS.getId(), new CfmlAttributeNameRule()));
+		rules.add(new MultiLineRule("<", ">", new Token(LangPartitionTypes.CF_START_TAG.getId())));
 	}
 	
 	/**
