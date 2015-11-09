@@ -5,7 +5,7 @@ import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
 import org.cfeclipse.ide.ui.text.CfmlEndTagScanner;
 import org.cfeclipse.ide.ui.text.CfmlSetTagScanner;
-import org.cfeclipse.ide.ui.text.CfmlStartTagBeginScanner;
+import org.cfeclipse.ide.ui.text.CfmlStartTagScanner;
 import org.cfeclipse.ide.ui.text.CfmlStartTagEndScanner;
 import org.cfeclipse.ide.ui.text.HtmlTagScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -56,9 +56,7 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 //		case CF_SET_STATEMENT:
 //			return new CfmlSetTagScanner(tokenStore);	
 		case CF_START_TAG:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CF_TAG);
-		case CF_TAG_ATTRIBS:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CF_TAG_ATTRIBUTE);
+			return new CfmlStartTagScanner(tokenStore);
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}

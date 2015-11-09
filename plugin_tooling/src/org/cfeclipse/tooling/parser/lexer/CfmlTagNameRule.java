@@ -1,25 +1,54 @@
 package org.cfeclipse.tooling.parser.lexer;
 
-import melnorme.lang.tooling.parser.lexer.IPredicateLexingRule;
-import melnorme.lang.utils.parse.ICharacterReader;
-import melnorme.lang.utils.parse.LexingUtils;
+import org.eclipse.jface.text.rules.ICharacterScanner;
+import org.eclipse.jface.text.rules.IRule;
+import org.eclipse.jface.text.rules.IToken;
+import org.eclipse.jface.text.rules.Token;
 
-public class CfmlTagNameRule implements IPredicateLexingRule {
+public class CfmlTagNameRule implements IRule {
 	
-	public CfmlTagNameRule() {
-		super();
+	private final IToken token;
+	private int charsRead = 0;
+	
+	public CfmlTagNameRule(final IToken theToken) {
+		this.token = theToken;
 	}
 
 	@Override
-	public boolean doEvaluate(ICharacterReader reader) {
-
-		if(reader.tryConsume("cf")) {
-			String word = LexingUtils.readJavaIdentifier(reader);
-			if (!word.isEmpty()) {
-				return true;
+	public IToken evaluate(ICharacterScanner scanner) {
+		int c = read(scanner);
+		if (c == 'c' || c == 'C') {
+			int f = read(scanner);
+			if (f == 'f' || f == 'F') {
+				while(Character.isLetter(read(scanner))) {
+					// consume
+				}
+				if (charsRead > 3) {
+					unread(scanner); // back up from the one we found that isn't a letter
+					return token;
+				} 
 			}
 		}
-		return false;
+		rewind(scanner, charsRead);
+		return Token.UNDEFINED;
+	}
+
+	private void rewind(final ICharacterScanner scanner, int theCharsRead) {
+		while (theCharsRead > 0) {
+			theCharsRead--;
+			unread(scanner);
+		}
+	}
+
+	private void unread(final ICharacterScanner scanner) {
+		scanner.unread();
+		charsRead--;
+	}
+
+	private int read(final ICharacterScanner scanner) {
+		final int c = scanner.read();
+		charsRead++;
+		return c;
 	}
 
 }
