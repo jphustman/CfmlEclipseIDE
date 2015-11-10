@@ -7,10 +7,23 @@ public class CfmlWordLexerRule<TOKEN> extends WordLexerRule<TOKEN> {
 	public static final String[] keywords = { 
 			"var" 
 	};
-	
-	public CfmlWordLexerRule(TOKEN whitespaceToken, TOKEN defaultWordToken) {
-		super(whitespaceToken, defaultWordToken);
-		addKeywords(defaultWordToken, CfmlWordLexerRule.keywords);
-	}
 
+	public static final String[] operators = { 
+			"neq", "eq", "is", "gt", "lt", "gte", "lte" 
+	};	
+	
+	public CfmlWordLexerRule(
+			TOKEN whitespaceToken,
+			TOKEN defaultWordToken,
+			TOKEN keywordToken,			
+			TOKEN booleanLiteralToken, 
+			TOKEN builtinScopeToken, 
+			TOKEN numberLiteralToken,
+			TOKEN operatorToken
+			) {
+		super(whitespaceToken, defaultWordToken);
+		
+		addKeywords(keywordToken, CfmlWordLexerRule.keywords);
+		addKeywords(operatorToken, CfmlWordLexerRule.operators);
+	}	
 }

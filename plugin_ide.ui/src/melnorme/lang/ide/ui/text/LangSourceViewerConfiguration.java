@@ -6,6 +6,7 @@ import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
 import org.cfeclipse.ide.ui.text.CfmlEndTagScanner;
 import org.cfeclipse.ide.ui.text.CfmlSetTagScanner;
 import org.cfeclipse.ide.ui.text.CfmlStartTagScanner;
+import org.cfeclipse.ide.ui.text.HtmlStartTagScanner;
 import org.cfeclipse.ide.ui.text.CfmlStartTagEndScanner;
 import org.cfeclipse.ide.ui.text.HtmlTagScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -36,8 +37,8 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		switch (partitionType) {
 //		case CODE: 
 //			return new CfmlCodeScanner(tokenStore);			
-//		case CFSTRING:
-//			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFSTRING);
+		case CFSTRING:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CF_STRING);
 //		case JAVADOC_COMMENT:
 //		case CF_SCRIPT_COMMENT_BLOCK:
 //		case CF_SCRIPT_COMMENT:
@@ -56,7 +57,12 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 //		case CF_SET_STATEMENT:
 //			return new CfmlSetTagScanner(tokenStore);	
 		case CF_START_TAG:
+		case CF_END_TAG:			
 			return new CfmlStartTagScanner(tokenStore);
+		case HTM_START_TAG:
+			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
+		case HTML_TAG:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}
