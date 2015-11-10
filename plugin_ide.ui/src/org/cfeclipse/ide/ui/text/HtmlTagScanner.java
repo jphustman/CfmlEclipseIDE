@@ -50,7 +50,7 @@ public class HtmlTagScanner extends AbstractLangScanner {
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
 
-		IToken stringToken = getToken(CfmlColorPreferences.CF_STRING);
+		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
 		
 		//I think its more important to show cfvariable then to color code the
 		// attributes.

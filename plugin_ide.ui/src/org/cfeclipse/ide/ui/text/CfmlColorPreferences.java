@@ -22,37 +22,25 @@ public interface CfmlColorPreferences {
 	ThemedTextStylingPreference DEFAULT_TEXT = new ThemedTextStylingPreference(PREFIX + "default_text",
 		new TextStyling(new RGB(0,   0,   0), false, false),
 		new TextStyling(new RGB(230, 230, 230), false, false));
-	ThemedTextStylingPreference CF_STRING = new ThemedTextStylingPreference(PREFIX + "cf_string",
-		new TextStyling(new RGB(128, 0, 128), false, false),
-		new TextStyling(new RGB(0, 0, 255), false, false));
-	ThemedTextStylingPreference CF_TAG = new ThemedTextStylingPreference(PREFIX + "cf_tag",
-		new TextStyling(new RGB(0, 0, 255), false, false),
-		new TextStyling(new RGB(0, 0, 255), false, false));	
-	ThemedTextStylingPreference CF_TAG_ATTRIBUTE = new ThemedTextStylingPreference(PREFIX + "cf_tag_attribute",
-			new TextStyling(new RGB(128, 0, 0), false, false),
-			new TextStyling(new RGB(0, 0, 255), false, false));		
 	ThemedTextStylingPreference HTML_TAG = new ThemedTextStylingPreference(PREFIX + "html_tag",
-			new TextStyling(new RGB(128, 0, 0), false, false),
-			new TextStyling(new RGB(128, 0, 0), false, false));			
-	ThemedTextStylingPreference HTML_TAG_ATTRIBUTE = new ThemedTextStylingPreference(PREFIX + "html_tag_attribute",
-			new TextStyling(new RGB(0, 0, 255), false, false),
-			new TextStyling(new RGB(0, 0, 255), false, false));				
-	ThemedTextStylingPreference TAGLIB_TAG = new ThemedTextStylingPreference(PREFIX + "taglib_tag",
-		new TextStyling(new RGB(60, 60, 170), false, false),
-		new TextStyling(new RGB(60, 60, 170), false, false));	
-	ThemedTextStylingPreference CFKEYWORD = new ThemedTextStylingPreference(PREFIX + "cfkeyword",
+			new TextStyling(new RGB(0, 0, 128), false, false),
+			new TextStyling(new RGB(0, 0, 128), false, false));				
+	ThemedTextStylingPreference CFML_STRING = new ThemedTextStylingPreference(PREFIX + "cfml_string",
+		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(0, 0, 255), false, false));
+	ThemedTextStylingPreference CFML_TAG = new ThemedTextStylingPreference(PREFIX + "cfml_tag",
+		new TextStyling(new RGB(128,0,0), false, false),
+		new TextStyling(new RGB(128,0,0), false, false));	
+	ThemedTextStylingPreference CFML_KEYWORD = new ThemedTextStylingPreference(PREFIX + "cfml_keyword",
 		new TextStyling(new RGB(60, 197, 255), true, false),
 		new TextStyling(new RGB(60, 197, 255), true, false));
-	ThemedTextStylingPreference CFOPERATOR = new ThemedTextStylingPreference(PREFIX + "cfoperator",
+	ThemedTextStylingPreference CFML_OPERATOR = new ThemedTextStylingPreference(PREFIX + "cfml_operator",
 		new TextStyling(new RGB(0, 0, 255), false, false),
 		new TextStyling(new RGB(0, 0, 255), false, false));
-	ThemedTextStylingPreference CFNUMBER = new ThemedTextStylingPreference(PREFIX + "cfnumber",
+	ThemedTextStylingPreference CFML_NUMBER = new ThemedTextStylingPreference(PREFIX + "cfml_number",
 		new TextStyling(new RGB(255, 10, 10), false, false),
 		new TextStyling(new RGB(255, 10, 10), false, false));
-	ThemedTextStylingPreference CFBUILTINSCOPE = new ThemedTextStylingPreference(PREFIX + "cfbuiltinscope",
-		new TextStyling(new RGB(204, 0, 0), false, false),
-		new TextStyling(new RGB(204, 0, 0), false, false));
-	ThemedTextStylingPreference CFSCOPE = new ThemedTextStylingPreference(PREFIX + "cfscope",
+	ThemedTextStylingPreference CFML_SCOPE = new ThemedTextStylingPreference(PREFIX + "cfml_scope",
 		new TextStyling(new RGB(204, 0, 0), false, false),
 		new TextStyling(new RGB(204, 0, 0), false, false));	
 	ThemedTextStylingPreference CFCOMMENT = new ThemedTextStylingPreference(PREFIX + "cfcomment",
@@ -91,4 +79,7 @@ public interface CfmlColorPreferences {
 	ThemedTextStylingPreference SQL_COMMENT = new ThemedTextStylingPreference(PREFIX + "sql_comment",
 		new TextStyling(new RGB(170, 170, 170), false, false),
 		new TextStyling(new RGB(0, 128, 128), false, false));	
+	ThemedTextStylingPreference CFML_COMMENT = new ThemedTextStylingPreference(PREFIX + "cfml_comment",
+		new TextStyling(new RGB(128, 128, 128), false, false),
+		new TextStyling(new RGB(128, 128, 128), false, false));	
 }

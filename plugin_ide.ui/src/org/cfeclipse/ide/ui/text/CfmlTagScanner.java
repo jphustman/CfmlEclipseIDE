@@ -6,7 +6,6 @@ import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
 import org.eclipse.jface.text.rules.NumberRule;
-import org.eclipse.jface.text.rules.RuleBasedScanner;
 
 import cfml.dictionary.DictionaryManager;
 import cfml.dictionary.preferences.DictionaryPreferences;
@@ -25,10 +24,10 @@ public class CfmlTagScanner extends AbstractLangScanner {
 	
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
-		IToken stringToken = getToken(CfmlColorPreferences.CF_STRING);
-		IToken numberToken = getToken(CfmlColorPreferences.CFNUMBER);
-		IToken tagToken = getToken(CfmlColorPreferences.CF_TAG);
-		IToken keywordToken = getToken(CfmlColorPreferences.CFOPERATOR);
+		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
+		IToken numberToken = getToken(CfmlColorPreferences.CFML_NUMBER);
+		IToken tagToken = getToken(CfmlColorPreferences.CFML_TAG);
+		IToken keywordToken = getToken(CfmlColorPreferences.CFML_OPERATOR);
 		
 		rules.add(new MultiLineRule("<cfset", " ", tagToken));
 		rules.add(new MultiLineRule("'","'",stringToken));

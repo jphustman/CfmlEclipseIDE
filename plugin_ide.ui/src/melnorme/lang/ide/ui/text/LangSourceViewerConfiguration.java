@@ -38,31 +38,20 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 //		case CODE: 
 //			return new CfmlCodeScanner(tokenStore);			
 		case CFSTRING:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CF_STRING);
-//		case JAVADOC_COMMENT:
-//		case CF_SCRIPT_COMMENT_BLOCK:
-//		case CF_SCRIPT_COMMENT:
-//		case CF_COMMENT:
-//			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFCOMMENT);
-//		case HTM_START_TAG_BEGIN:
-//		case HTM_START_TAG_END:
-//		case HTM_END_TAG:
-//			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
-//		case CF_START_TAG_END:
-//			return new CfmlStartTagEndScanner(tokenStore);
-//		case CF_END_TAG:
-//			return new CfmlEndTagScanner(tokenStore);
-//		case CF_START_TAG_BEGIN:
-//			return new CfmlStartTagBeginScanner(tokenStore);
-//		case CF_SET_STATEMENT:
-//			return new CfmlSetTagScanner(tokenStore);	
-		case CF_START_TAG:
-		case CF_END_TAG:			
-			return new CfmlStartTagScanner(tokenStore);
-		case HTM_START_TAG:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_STRING);
+		case JAVADOC_COMMENT:
+		case CF_SCRIPT_COMMENT_BLOCK:
+		case CF_SCRIPT_COMMENT:
+		case CF_COMMENT:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_COMMENT);
+		case HTM_START_TAG_BEGIN:
+		case HTM_START_TAG_END:
+		case HTM_END_TAG:
 			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
-		case HTML_TAG:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
+		case CF_START_TAG_BEGIN:
+		case CF_START_TAG_END:
+		case CF_END_TAG:
+			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);		
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}

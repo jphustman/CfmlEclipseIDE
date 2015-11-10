@@ -55,7 +55,8 @@ public class TextSettings_Actual {
 		CF_TAG_DATA,
 		CFNUMBER,
 		CFSTRING,
-		HTML_TAG;
+		HTML_TAG,
+		JAVADOC;
 		
 		public String getId() {
 			if(ordinal() == 0) {
