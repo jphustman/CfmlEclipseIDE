@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.cfeclipse.ide.core.text;
 
-import org.cfeclipse.tooling.parser.lexer.CfmlAttributeNameRule;
-import org.cfeclipse.tooling.parser.lexer.CfmlTagNameRule;
 import org.eclipse.jface.text.rules.IPredicateRule;
 import org.eclipse.jface.text.rules.MultiLineRule;
 import org.eclipse.jface.text.rules.Token;
@@ -31,7 +29,15 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		
 		//the order here is important. It should go from specific to
 		//general as the rules are applied in order
-		rules.add(new MultiLineRule("<", ">", new Token(LangPartitionTypes.CF_START_TAG.getId())));
+		//rules.add(new MultiLineRule("<cfoutput>", "</cfoutput>", new Token(LangPartitionTypes.JAVADOC_COMMENT.getId())));		
+		rules.add(new MultiLineRule("<", ">", new Token(LangPartitionTypes.HTML_TAG.getId())));
+//		rules.add(new MultiLineRule("\"", "\"", new Token(LangPartitionTypes.CFSTRING.getId())));
+//		rules.add(new MultiLineRule("'", "'", new Token(LangPartitionTypes.CFSTRING.getId())));
+//		rules.add(new MultiLineRule("<cf", ">", new Token(LangPartitionTypes.CF_START_TAG.getId())));
+//		rules.add(new MultiLineRule("</cf", ">", new Token(LangPartitionTypes.CF_END_TAG.getId())));
+//		rules.add(new MultiLineRule("</", ">", new Token(LangPartitionTypes.HTM_END_TAG.getId())));
+		
+		
 	}
 	
 	/**

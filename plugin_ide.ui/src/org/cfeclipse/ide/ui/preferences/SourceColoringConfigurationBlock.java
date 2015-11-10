@@ -33,11 +33,9 @@ public class SourceColoringConfigurationBlock extends AbstractSourceColoringConf
 				new SourceColoringElement("Operators", CfmlColorPreferences.CFOPERATOR),
 				new SourceColoringElement("CFML Tags", CfmlColorPreferences.CF_TAG),
 				new SourceColoringElement("CFML Tag Attributes", CfmlColorPreferences.CF_TAG_ATTRIBUTE),
-				new SourceColoringElement("HTML Tags", CfmlColorPreferences.HTML_TAG)
-				//new SourceColoringElement("Keywords - Literals", CfmlColorPreferences.KEYWORDS_VALUES),
-				//new SourceColoringElement("Strings", CfmlColorPreferences.STRINGS),
-				//new SourceColoringElement("Characters", CfmlColorPreferences.CHARACTER),
-				//new SourceColoringElement("Builtin Functions", CfmlColorPreferences.BUILTIN_FUNCTION)
+				new SourceColoringElement("HTML Tags", CfmlColorPreferences.HTML_TAG),
+				new SourceColoringElement("HTML Tag Attributes", CfmlColorPreferences.HTML_TAG_ATTRIBUTE),				
+				new SourceColoringElement("Strings", CfmlColorPreferences.CF_STRING)
 			)),
 			new SourceColoringCategory("Comments", array(
 				new SourceColoringElement("Comment", CfmlColorPreferences.CFCOMMENT),

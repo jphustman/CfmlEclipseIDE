@@ -62,7 +62,8 @@ public class EditorSettings_Actual {
 			CfmlColorPreferences.CF_TAG,
 			CfmlColorPreferences.HTML_TAG,
 			CfmlColorPreferences.CF_TAG_ATTRIBUTE,
-			CfmlColorPreferences.JAVADOC
+			CfmlColorPreferences.JAVADOC,
+			CfmlColorPreferences.HTML_TAG_ATTRIBUTE
 		);
 	}
 	

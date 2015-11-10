@@ -20,18 +20,23 @@ public interface CfmlColorPreferences {
 	String PREFIX = "editor.coloring."; 
 	
 	ThemedTextStylingPreference DEFAULT_TEXT = new ThemedTextStylingPreference(PREFIX + "default_text",
-		new TextStyling(new RGB(  0,   0,   0), false, false),
+		new TextStyling(new RGB(0,   0,   0), false, false),
 		new TextStyling(new RGB(230, 230, 230), false, false));
 	ThemedTextStylingPreference CF_STRING = new ThemedTextStylingPreference(PREFIX + "cf_string",
-		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(128, 0, 128), false, false),
 		new TextStyling(new RGB(0, 0, 255), false, false));
 	ThemedTextStylingPreference CF_TAG = new ThemedTextStylingPreference(PREFIX + "cf_tag",
-		new TextStyling(new RGB(128,0,0), false, false),
-		new TextStyling(new RGB(128,0,0), false, false));	
+		new TextStyling(new RGB(0, 0, 255), false, false),
+		new TextStyling(new RGB(0, 0, 255), false, false));	
 	ThemedTextStylingPreference CF_TAG_ATTRIBUTE = new ThemedTextStylingPreference(PREFIX + "cf_tag_attribute",
-			new TextStyling(new RGB(0,0,255), false, false),
-			new TextStyling(new RGB(0,0,255), false, false));	
-	
+			new TextStyling(new RGB(128, 0, 0), false, false),
+			new TextStyling(new RGB(0, 0, 255), false, false));		
+	ThemedTextStylingPreference HTML_TAG = new ThemedTextStylingPreference(PREFIX + "html_tag",
+			new TextStyling(new RGB(128, 0, 0), false, false),
+			new TextStyling(new RGB(128, 0, 0), false, false));			
+	ThemedTextStylingPreference HTML_TAG_ATTRIBUTE = new ThemedTextStylingPreference(PREFIX + "html_tag_attribute",
+			new TextStyling(new RGB(0, 0, 255), false, false),
+			new TextStyling(new RGB(0, 0, 255), false, false));				
 	ThemedTextStylingPreference TAGLIB_TAG = new ThemedTextStylingPreference(PREFIX + "taglib_tag",
 		new TextStyling(new RGB(60, 60, 170), false, false),
 		new TextStyling(new RGB(60, 60, 170), false, false));	
@@ -51,7 +56,7 @@ public interface CfmlColorPreferences {
 		new TextStyling(new RGB(204, 0, 0), false, false),
 		new TextStyling(new RGB(204, 0, 0), false, false));	
 	ThemedTextStylingPreference CFCOMMENT = new ThemedTextStylingPreference(PREFIX + "cfcomment",
-		new TextStyling(new RGB(128, 128, 128), false, false),
+		new TextStyling(new RGB(170, 170, 170), false, false),
 		new TextStyling(new RGB(128, 128, 128), false, false));
 	ThemedTextStylingPreference BACKGROUND_CFCOMMENT = new ThemedTextStylingPreference(PREFIX + "background_cfcomment",
 		new TextStyling(new RGB(255, 255, 255), false, false),
@@ -84,10 +89,6 @@ public interface CfmlColorPreferences {
 		new TextStyling(new RGB(128, 128, 128), false, false),
 		new TextStyling(new RGB(128, 128, 128), false, false));		
 	ThemedTextStylingPreference SQL_COMMENT = new ThemedTextStylingPreference(PREFIX + "sql_comment",
-		new TextStyling(new RGB(0, 128, 128), false, false),
-		new TextStyling(new RGB(0, 128, 128), false, false));
-	ThemedTextStylingPreference HTML_TAG = new ThemedTextStylingPreference(PREFIX + "html_tag",
-			new TextStyling(new RGB(0, 0, 128), false, false),
-			new TextStyling(new RGB(0, 0, 128), false, false));			
-	
+		new TextStyling(new RGB(170, 170, 170), false, false),
+		new TextStyling(new RGB(0, 128, 128), false, false));	
 }
