@@ -15,6 +15,7 @@ import static melnorme.utilbox.core.CoreUtil.array;
 import java.io.InputStream;
 
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
+
 import melnorme.lang.ide.ui.text.coloring.AbstractSourceColoringConfigurationBlock;
 import melnorme.util.swt.jface.LabeledTreeElement;
 
@@ -28,19 +29,17 @@ public class SourceColoringConfigurationBlock extends AbstractSourceColoringConf
 	protected LabeledTreeElement[] createTreeElements() {
 		return array(
 			new SourceColoringCategory("Source", array(
-				new SourceColoringElement("Default", CfmlColorPreferences.DEFAULT_TEXT),
-				new SourceColoringElement("Keywords", CfmlColorPreferences.CFKEYWORD),
-				new SourceColoringElement("Operators", CfmlColorPreferences.CFOPERATOR),
-				new SourceColoringElement("CFML Tags", CfmlColorPreferences.CFTAG),
-				new SourceColoringElement("HTML Tags", CfmlColorPreferences.HTML_TAG)
-				//new SourceColoringElement("Keywords - Literals", CfmlColorPreferences.KEYWORDS_VALUES),
-				//new SourceColoringElement("Strings", CfmlColorPreferences.STRINGS),
-				//new SourceColoringElement("Characters", CfmlColorPreferences.CHARACTER),
-				//new SourceColoringElement("Builtin Functions", CfmlColorPreferences.BUILTIN_FUNCTION)
+				new SourceColoringElement("CFML Scope", CfmlColorPreferences.CFML_SCOPE),					
+				new SourceColoringElement("CFML Tags", CfmlColorPreferences.CFML_TAG),
+				new SourceColoringElement("Default", CfmlColorPreferences.DEFAULT_TEXT),				
+				new SourceColoringElement("HTML Tags", CfmlColorPreferences.HTML_TAG),
+				new SourceColoringElement("Keywords", CfmlColorPreferences.CFML_KEYWORD),
+				new SourceColoringElement("Numbers", CfmlColorPreferences.CFML_NUMBER),				
+				new SourceColoringElement("Operators", CfmlColorPreferences.CFML_OPERATOR),				
+				new SourceColoringElement("Strings", CfmlColorPreferences.CFML_STRING)				
 			)),
 			new SourceColoringCategory("Comments", array(
-				new SourceColoringElement("Comment", CfmlColorPreferences.CFCOMMENT),
-				new SourceColoringElement("Doc Comment", CfmlColorPreferences.JAVADOC)
+				new SourceColoringElement("Comment", CfmlColorPreferences.CFML_COMMENT)
 			))
 		);
 	}

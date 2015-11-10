@@ -47,19 +47,13 @@ public class EditorSettings_Actual {
 	public static StylingPreferences getStylingPreferences() {
 		return new StylingPreferences(
 			CfmlColorPreferences.DEFAULT_TEXT,				
-			CfmlColorPreferences.BACKGROUND_CFCOMMENT,
-			CfmlColorPreferences.BACKGROUND_JAVADOC,		
-			CfmlColorPreferences.CFBUILTINSCOPE,
-			CfmlColorPreferences.CFCOMMENT,
-			CfmlColorPreferences.CFKEYWORD,
-			CfmlColorPreferences.CFOPERATOR,
-			CfmlColorPreferences.CFNUMBER,
-			CfmlColorPreferences.CFSCOPE,
-			CfmlColorPreferences.CFSCRIPT_FUNCTION,
-			CfmlColorPreferences.CFSCRIPT_KEYWORD,
-			CfmlColorPreferences.CFSCRIPT_TEXT,
-			CfmlColorPreferences.CFSTRING,
-			CfmlColorPreferences.CFTAG,
+			CfmlColorPreferences.CFML_COMMENT,
+			CfmlColorPreferences.CFML_KEYWORD,		
+			CfmlColorPreferences.CFML_NUMBER,
+			CfmlColorPreferences.CFML_OPERATOR,
+			CfmlColorPreferences.CFML_SCOPE,
+			CfmlColorPreferences.CFML_STRING,
+			CfmlColorPreferences.CFML_TAG,
 			CfmlColorPreferences.HTML_TAG
 		);
 	}
