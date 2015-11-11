@@ -93,7 +93,7 @@ public class TagData implements IToken {
 		fEndPartitionType = endPartitionType;
 		fTagName = tagName;
 		parseData();
-		// describeMe();
+		describeMe();
 	}
 
 	/**

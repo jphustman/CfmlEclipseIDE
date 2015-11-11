@@ -31,7 +31,6 @@
 package org.cfeclipse.ide.core.text;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
@@ -40,14 +39,10 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.BadPositionCategoryException;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.IDocumentPartitioner;
-import org.eclipse.jface.text.IDocumentPartitionerExtension;
-import org.eclipse.jface.text.IDocumentPartitionerExtension2;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITypedRegion;
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.Region;
-import org.eclipse.jface.text.TypedPosition;
 import org.eclipse.jface.text.TypedRegion;
 import org.eclipse.jface.text.rules.FastPartitioner;
 import org.eclipse.jface.text.rules.IPartitionTokenScanner;
@@ -339,7 +334,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
         if (tag == null) {
             return null;
         }
-        Set keys = fPseudoPartitions.keySet();
+        Set<Object> keys = fPseudoPartitions.keySet();
         Object[] tags = keys.toArray();
         for (int i = 0; i < tags.length; i++)
         {
@@ -359,7 +354,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
         if (tag == null) {
             return null;
         }
-        Set keys = fPseudoPartitions.keySet();
+        Set<Object> keys = fPseudoPartitions.keySet();
         Object[] tags = keys.toArray();
         for (int i = 0; i < tags.length; i++)
         {
@@ -571,7 +566,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
 	        
 	        cleanCompositePartitions(partitions,e);
 	        
-	        cleanPseudoPartitions(partitions,e);
+	        cleanPseudoPartitions(partitions);
 	        
 	        for (int i=0;i<partitions.length;i++) {
 	            CFEPartition p = (CFEPartition)partitions[i];
@@ -662,7 +657,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      * of partition deletions.
      *
      */
-    private void cleanPseudoPartitions(Position[] partitions, DocumentEvent e) {
+    private void cleanPseudoPartitions(Position[] partitions) {
 
             // Clean up any pseudo partitions.
             for (int i=0;i<partitions.length;i++) {
@@ -1205,7 +1200,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      * @return
      */
     public CFEPartition[] getCFEPartitions(int start, int end) {
-        ArrayList list = new ArrayList();
+        ArrayList<Position> list = new ArrayList<>();
         try {
             Position[] partitions = fDocument.getPositions(fPositionCategory);
             for (int i=0;i<partitions.length;i++) {
@@ -1241,7 +1236,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      * @return
      */
     public CFEPartition[] getStartTagPartitions(int offset) {
-        ArrayList partitionList =  new ArrayList();
+        ArrayList<CFEPartition> partitionList =  new ArrayList<>();
         //Position[] category;
         CFEPartition firstPart = getCFEPartition(offset);
         
@@ -1541,7 +1536,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
     
     
     
-    private String getStartPartitionName(String partitionType) {
+    private static String getStartPartitionName(String partitionType) {
         if (partitionType.startsWith("__htm_") 
                 && !partitionType.startsWith("__htm_end")) {
             return LangPartitionTypes.HTM_START_TAG_BEGIN.getId();
@@ -1559,7 +1554,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
         return null;
     }
    
-    private String getEndPartitionName(String partitionType) {
+    private static String getEndPartitionName(String partitionType) {
         if (partitionType.startsWith("__htm_") 
                 && !partitionType.startsWith("__htm_end")) {
             return LangPartitionTypes.HTM_START_TAG_END.getId();
@@ -1659,7 +1654,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      *         each other
      * @since 3.0
      */
-    private boolean overlapsOrTouches(Position gap, int offset, int length) {
+    private static boolean overlapsOrTouches(Position gap, int offset, int length) {
         return gap.getOffset() <= offset + length
                 && offset <= gap.getOffset() + gap.getLength();
     }
@@ -1676,7 +1671,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      * 
      * @since 3.0
      */
-    private int getFirstIndexEndingAfterOffset(Position[] positions, int offset) {
+    private static int getFirstIndexEndingAfterOffset(Position[] positions, int offset) {
         int i = -1, j = positions.length;
         while (j - i > 1) {
             int k = (i + j) >> 1;
@@ -1689,29 +1684,4 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
         return j;
     }
 
-    /**
-     * Returns the index of the first position which starts at or after the
-     * given offset.
-     * 
-     * @param positions
-     *            the positions in linear order
-     * @param offset
-     *            the offset
-     * @return the index of the first position which starts after the offset
-     * 
-     * @since 3.0
-     */
-    private int getFirstIndexStartingAfterOffset(Position[] positions,
-            int offset) {
-        int i = -1, j = positions.length;
-        while (j - i > 1) {
-            int k = (i + j) >> 1;
-            Position p = positions[k];
-            if (p.getOffset() >= offset)
-                j = k;
-            else
-                i = k;
-        }
-        return j;
-    }
 }

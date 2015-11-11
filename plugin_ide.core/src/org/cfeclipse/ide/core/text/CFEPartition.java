@@ -173,7 +173,7 @@ public final class CFEPartition extends TypedPosition {
     }
 
     /**
-     * @return a meningful string representation of this partition
+     * @return a meaningful string representation of this partition
      */
     @Override
 	public String toString() {
