@@ -20,7 +20,7 @@ public interface CfmlColorPreferences {
 	String PREFIX = "editor.coloring."; 
 	
 	ThemedTextStylingPreference DEFAULT_TEXT = new ThemedTextStylingPreference(PREFIX + "default_text",
-		new TextStyling(new RGB(  0,   0,   0), false, false),
+		new TextStyling(new RGB(0,   0,   0), false, false),
 		new TextStyling(new RGB(230, 230, 230), false, false));
 	ThemedTextStylingPreference HTML_TAG = new ThemedTextStylingPreference(PREFIX + "html_tag",
 			new TextStyling(new RGB(0, 0, 128), false, false),

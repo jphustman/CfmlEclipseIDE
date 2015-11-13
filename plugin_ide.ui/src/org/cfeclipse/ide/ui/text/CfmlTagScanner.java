@@ -1,13 +1,7 @@
 package org.cfeclipse.ide.ui.text;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Set;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
@@ -58,6 +52,6 @@ public class CfmlTagScanner extends AbstractLangScanner {
 		PredicateWordRule keywordRule = new PredicateWordRule(keywordDetector, tagToken, allkeys, keywordToken);
 		keywordRule.setCaseSensitive(false);		
 		rules.add(keywordRule);
-	}		
+	}
 	
 }
