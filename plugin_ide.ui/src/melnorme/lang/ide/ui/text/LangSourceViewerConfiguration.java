@@ -1,7 +1,6 @@
 package melnorme.lang.ide.ui.text;
 
 import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
-import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
 import org.cfeclipse.ide.ui.text.CfmlEndTagScanner;
 import org.cfeclipse.ide.ui.text.CfmlSetTagScanner;

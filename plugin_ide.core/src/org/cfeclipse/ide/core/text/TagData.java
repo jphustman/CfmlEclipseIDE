@@ -93,7 +93,7 @@ public class TagData implements IToken {
 		fEndPartitionType = endPartitionType;
 		fTagName = tagName;
 		parseData();
-		describeMe();
+		//describeMe();
 	}
 
 	/**
@@ -240,7 +240,6 @@ public class TagData implements IToken {
 
 	@Override
 	public Object getData() {
-		System.out.println("returning : " + fStartPartitionType);
 		return fStartPartitionType; //LangPartitionTypes.CF_TAG_DATA.getId();
 	}
 
