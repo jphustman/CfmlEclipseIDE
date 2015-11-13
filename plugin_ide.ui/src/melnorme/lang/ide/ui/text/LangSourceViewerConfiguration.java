@@ -1,7 +1,6 @@
 package melnorme.lang.ide.ui.text;
 
 import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
-import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
 import org.cfeclipse.ide.ui.text.CfmlTagScanner;
 import org.cfeclipse.ide.ui.text.HtmlTagScanner;
@@ -31,8 +30,8 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 	protected AbstractLangScanner createScannerFor(Display current, LangPartitionTypes partitionType, 
 			TokenRegistry tokenStore) {
 		switch (partitionType) {
-		case CODE: 
-			return new CfmlCodeScanner(tokenStore);			
+//		case CODE: 
+//			return new CfmlCodeScanner(tokenStore);			
 		case CFSTRING:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_STRING);
 		case JAVADOC_COMMENT:

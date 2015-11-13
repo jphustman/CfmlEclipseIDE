@@ -61,7 +61,8 @@
 		id="Builder"
 		name="%Builder_Name">
 		<builder
-			callOnEmptyDelta="true">
+			callOnEmptyDelta="true"
+			isConfigurable="true">
 			<run class="org.cfeclipse.ide.core.operations.CfmlBuilder" />
 		</builder>
 	</extension>
