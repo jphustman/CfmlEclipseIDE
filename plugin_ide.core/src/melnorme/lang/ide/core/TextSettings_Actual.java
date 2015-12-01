@@ -35,9 +35,9 @@ public class TextSettings_Actual {
 		HTM_TAG_ATTRIBS, 
 		CF_SCRIPT, 
 		CF_EXPRESSION, 
-		J_SCRIPT, 
-		CSS, 
-		SQL, 
+		JSCRIPT_REGION, 
+		CSS_REGION, 
+		SQL_REGION, 
 		UNK_TAG, 
 		TAGLIB_TAG, 
 		FORM_END_TAG, 
@@ -57,7 +57,9 @@ public class TextSettings_Actual {
 		CFSTRING,
 		HTML_TAG,
 		JAVADOC, 
-		CF_SCRIPT_REGION, CFML_JAVADOC;
+		CF_SCRIPT_REGION, 
+		CFML_JAVADOC,
+		JSCRIPT_TEXT;
 		
 		public String getId() {
 			if(ordinal() == 0) {

@@ -90,10 +90,6 @@ public class CFScriptScanner extends AbstractLangScanner {
 		rules.add(new EndOfLineRule("//", cfcomment));
 		rules.add(new NumberRule(cfnumber));
 		
-		//TODO: Get the dictionary from the project or overall settings, rather than just picking the default
-		DictionaryPreferences dp = new DictionaryPreferences();
-		dp.setDictionaryDir("D:/AMyers/Documents/projects/cfml.dictionary/src/main/resources/dictionary");
-		DictionaryManager.initDictionaries(dp);
 		CFSyntaxDictionary dic = (CFSyntaxDictionary)DictionaryManager.getDictionary(DictionaryManager.CFDIC_KEY);		
 		
 		//do any keywords

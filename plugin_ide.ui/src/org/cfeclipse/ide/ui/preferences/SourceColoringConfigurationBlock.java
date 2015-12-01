@@ -41,7 +41,14 @@ public class SourceColoringConfigurationBlock extends AbstractSourceColoringConf
 
 		)), new SourceColoringCategory("Comments",
 				array(new SourceColoringElement("Comment", CfmlColorPreferences.CFML_COMMENT),
-						new SourceColoringElement("Javadoc", CfmlColorPreferences.CFML_JAVADOC))));
+						new SourceColoringElement("Javadoc", CfmlColorPreferences.CFML_JAVADOC),
+						new SourceColoringElement("SQL Comment", CfmlColorPreferences.SQL_COMMENT)
+		)), new SourceColoringCategory("SQL",
+				array(new SourceColoringElement("Keywords", CfmlColorPreferences.SQL_KEYWORD),
+						new SourceColoringElement("Numbers", CfmlColorPreferences.SQL_NUMBER),
+						new SourceColoringElement("Strings", CfmlColorPreferences.SQL_STRING)
+						
+		)));
 	}
 
 	private static final String PREVIEW_FILE_NAME = "SourceColoringPreviewFile.lang";

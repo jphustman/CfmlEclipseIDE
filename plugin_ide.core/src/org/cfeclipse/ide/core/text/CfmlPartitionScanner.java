@@ -10,6 +10,17 @@
  *******************************************************************************/
 package org.cfeclipse.ide.core.text;
 
+<<<<<<< 761c70ef36e2bb42be82da316a658b8dcf1f47ed
+=======
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Set;
+
+import org.cfeclipse.tooling.parser.lexer.CfmlEmptyCommentPredicateRule;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.jface.text.rules.EndOfLineRule;
+>>>>>>> Syntax highlighting largely complete
 import org.eclipse.jface.text.rules.IPredicateRule;
 import org.eclipse.jface.text.rules.MultiLineRule;
 import org.eclipse.jface.text.rules.Token;
@@ -26,26 +37,25 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 
 	@Override
 	protected void initPredicateRules(ArrayList2<IPredicateRule> rules) {
-		
-		IToken doctype	 	= new Token(LangPartitionTypes.DOCTYPE.getId());
-		IToken cfComment 	= new Token(LangPartitionTypes.CF_COMMENT.getId());
+
+		IToken doctype = new Token(LangPartitionTypes.DOCTYPE.getId());
+		IToken cfComment = new Token(LangPartitionTypes.CF_COMMENT.getId());
 		IToken cfscriptCommentBlock = new Token(LangPartitionTypes.CF_SCRIPT_COMMENT_BLOCK.getId());
 		IToken cfscriptComment = new Token(LangPartitionTypes.CF_SCRIPT_COMMENT.getId());
 		IToken javaDocComment = new Token(LangPartitionTypes.JAVADOC_COMMENT.getId());
-		IToken htmComment 	= new Token(LangPartitionTypes.HTM_COMMENT.getId());
-		IToken taglibtag		= new Token(LangPartitionTypes.TAGLIB_TAG.getId());
-		IToken unktag		= new Token(LangPartitionTypes.UNK_TAG.getId());	
+		IToken htmComment = new Token(LangPartitionTypes.HTM_COMMENT.getId());
+		IToken taglibtag = new Token(LangPartitionTypes.TAGLIB_TAG.getId());
+		IToken unktag = new Token(LangPartitionTypes.UNK_TAG.getId());
 		IToken cfscriptRegion = new Token(LangPartitionTypes.CF_SCRIPT_REGION);
 		
-		// NestableMultiLineRule cfScriptRule = new NestableMultiLineRule("component", "}", cfScript);
-		// cfScriptRule.setColumnConstraint(0);
-		// rules.add(cfScriptRule);
-		//rules.add(new CFScriptComponentRule("component", "{", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_TAG_ATTRIBS.getId()));
-		//rules.add(new CFScriptComponentEndRule("}", LangPartitionTypes.CF_END_TAG.getId(), LangPartitionTypes.CF_SCRIPT.getId()));
-		// rules.add(new CFScriptComponentRule("}", "}", CF_SCRIPT, CF_SCRIPT));
+		//the order here is important. It should go from specific to
+		//general as the rules are applied in order
 		
-		rules.add(new MultiLineRule("<cfscript>", "</cfscript>", cfscriptRegion));
-		rules.add(new MultiLineRule("<CFSCRIPT>", "</CFSCRIPT>", cfscriptRegion));
+		// This is a bit of a hack as tnenopmoc would end the syntax highlighting.  
+		// However it seems unlikely that we'd encounter this 
+		rules.add(new MultiLineRule("component", "tnenopmoc", cfscriptRegion, (char) 0, true));
+		//rules.add(new MultiLineRule("<cfscript>", "</cfscript>", cfscriptRegion));
+		//rules.add(new MultiLineRule("<CFSCRIPT>", "</CFSCRIPT>", cfscriptRegion));
 		
 		rules.add(new CfmlEmptyCommentPredicateRule(cfscriptCommentBlock));
 		rules.add(new MultiLineRule("/**", "*/", javaDocComment, (char) 0, true));
@@ -64,11 +74,17 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		rules.add(new NamedTagRule("<cfelseif",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_BOOLEAN_STATEMENT.getId()));
 		rules.add(new NamedTagRule("<cfreturn",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_RETURN_STATEMENT.getId()));
 		
-		//SyntaxDictionary sd = DictionaryManager.getDictionary(DictionaryManager.CFDIC);
 		DictionaryPreferences dp = new DictionaryPreferences();
-		dp.setDictionaryDir("D:/AMyers/Documents/projects/cfml.dictionary/src/main/resources/dictionary");
+		URL dictionaryDirURL;
+		try {
+			dictionaryDirURL = FileLocator.resolve(new URL("platform:/plugin/org.cfeclipse.ide.core/dictionary/"));
+			dp.setDictionaryDir(dictionaryDirURL.getFile());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace(System.err);
+		}
+
 		DictionaryManager.initDictionaries(dp);
-		//CFSyntaxDictionary cfd = (CFSyntaxDictionary)DictionaryManager.getDictionary(DictionaryManager.CFDIC_KEY);
 		
 		SyntaxDictionary sd = DictionaryManager.getDictionary(DictionaryManager.CFDIC_KEY);
 
