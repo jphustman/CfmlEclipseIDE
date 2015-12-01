@@ -61,8 +61,7 @@ import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
  * cleanCompositePartitions(), cleanPsuedoPartitions(), and 
  * repairPseudoPartitions() methods.
  */
-public class CFEPartitioner extends FastPartitioner {/*implements IDocumentPartitioner,
-        IDocumentPartitionerExtension, IDocumentPartitionerExtension2 { */
+public class CFEPartitioner extends FastPartitioner {
 
     private final static String CONTENT_TYPES_CATEGORY = "__content_types_category";
         
@@ -118,10 +117,10 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
     	super(scanner, legalContentTypes);
         fPositionCategory = CONTENT_TYPES_CATEGORY + hashCode();
         fPseudoPartitions = new Properties();
-        fPseudoPartitions.put("cfquery",LangPartitionTypes.SQL.getId());
-        fPseudoPartitions.put("cfscript",LangPartitionTypes.CF_SCRIPT.getId());
-        fPseudoPartitions.put("style",LangPartitionTypes.CSS);
-		fPseudoPartitions.put("script", LangPartitionTypes.J_SCRIPT.getId());
+        fPseudoPartitions.put("cfquery",LangPartitionTypes.SQL_REGION.getId());
+        fPseudoPartitions.put("cfscript",LangPartitionTypes.CF_SCRIPT_REGION.getId());
+        fPseudoPartitions.put("style",LangPartitionTypes.CSS_REGION);
+		fPseudoPartitions.put("script", LangPartitionTypes.JSCRIPT_REGION.getId());
     }
 
     /*
@@ -200,14 +199,12 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      * @return
      */
     private String handleToken(IToken token, String contentType) {
-    	System.out.println("handleToken called on CFEPartitioner");
         try {
             CFEPartition p = null;
             int length;
             int indexOffset = 0;
             String rawData = null;
             if (token.getData() instanceof TagData) {
-            	System.out.println("Token.getData() is instance of TagData");
                 TagData data = (TagData) token.getData();
                 int start = fScanner.getTokenOffset();
                 length = data.getFirstPartitionEnd();

@@ -5,10 +5,13 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import org.cfeclipse.ide.core.text.CfmlPartitionScanner;
 import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
 import org.cfeclipse.ide.ui.text.CFScriptScanner;
+import org.cfeclipse.ide.ui.text.CSSScanner;
 import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
 import org.cfeclipse.ide.ui.text.CfmlTagScanner;
 import org.cfeclipse.ide.ui.text.HtmlTagScanner;
+import org.cfeclipse.ide.ui.text.JavaScriptScanner;
+import org.cfeclipse.ide.ui.text.SQLScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.information.IInformationProvider;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
@@ -43,27 +46,46 @@ public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfi
 		switch (partitionType) {
 		case CODE: 
 			return new CfmlCodeScanner(tokenStore);
+/*
 		case CFSTRING:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_STRING);
+*/
+			
 		case JAVADOC_COMMENT:
 		case CF_SCRIPT_COMMENT_BLOCK:
 		case CF_SCRIPT_COMMENT:
 		case CF_COMMENT:
 		case CFML_JAVADOC:
-			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_COMMENT);			
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_COMMENT);
+			
 		case HTM_START_TAG_BEGIN:
-//		case HTM_START_TAG_END:
-		case HTM_END_TAG:
 			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.HTML_TAG);
+		case HTM_TAG_ATTRIBS:
+			return new HtmlTagScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT); 
+		case HTM_START_TAG_END:
+		case HTM_END_TAG:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.HTML_TAG);			
+					
 		case CF_START_TAG_BEGIN:
-//		case CF_START_TAG_END:
-		case CF_END_TAG:
-			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.CFML_TAG);	
+			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.CFML_TAG);
+		case CF_TAG_ATTRIBS:
+			return new CfmlTagScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
+		case CF_END_TAG:			
+		case CF_START_TAG_END:
+			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.CFML_TAG);			
 		case CF_SCRIPT_REGION:
-			return new CFScriptScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
+			return new CFScriptScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);			
+		case JSCRIPT_REGION:
+			return new JavaScriptScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);	
+		case CSS_REGION:
+			return new CSSScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
+		case SQL_REGION:
+			return new SQLScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		default:
 			return new SingleTokenScanner(tokenStore, CfmlColorPreferences.DEFAULT_TEXT);
 		}
+		
+		
 		//throw assertUnreachable();
 	}
 	

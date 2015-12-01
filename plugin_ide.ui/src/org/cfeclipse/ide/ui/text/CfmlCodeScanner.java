@@ -30,23 +30,6 @@ public class CfmlCodeScanner extends AbstractLangScanner {
 	protected void initRules(ArrayList2<IRule> rules) {
 		IToken defaultToken = getToken(CfmlColorPreferences.DEFAULT_TEXT);
 		setDefaultReturnToken(defaultToken);
-		
-//		CFScriptScanner cfss = new CFScriptScanner(null, null);
-		//rules.add(cfss);
-		
-		/*
-		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(
-			Token.WHITESPACE, 
-			defaultToken,
-			defaultToken,
-			defaultToken,
-			defaultToken,
-			defaultToken,
-			defaultToken
-		);
-		
-		rules.add(new LexingRule_RuleAdapter(codeLexerRule));
-		*/
 	}
 	
 }

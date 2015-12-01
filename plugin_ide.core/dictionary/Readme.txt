@@ -1,0 +1,1 @@
+The "master" version of these files is in the cfml.dictionary repository.  Any changes should be made there, and copied to here.

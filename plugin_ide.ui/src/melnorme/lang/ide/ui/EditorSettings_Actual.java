@@ -57,7 +57,12 @@ public class EditorSettings_Actual {
 			CfmlColorPreferences.HTML_TAG,
 			CfmlColorPreferences.CFML_BUILTINSCOPE,
 			CfmlColorPreferences.CFML_JAVADOC,
-			CfmlColorPreferences.CFSCRIPT_FUNCTION
+			CfmlColorPreferences.CFSCRIPT_FUNCTION,
+			CfmlColorPreferences.CFML_ATTRIBUTE,
+			CfmlColorPreferences.SQL_NUMBER,
+			CfmlColorPreferences.SQL_COMMENT,
+			CfmlColorPreferences.SQL_STRING,
+			CfmlColorPreferences.SQL_KEYWORD
 		);
 	}
 	
