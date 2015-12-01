@@ -24,6 +24,7 @@ public class CfmlTagScanner extends AbstractLangScanner {
 	
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
+		
 		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
 		IToken numberToken = getToken(CfmlColorPreferences.CFML_NUMBER);
 		IToken tagToken = getToken(CfmlColorPreferences.CFML_TAG);
@@ -47,10 +48,10 @@ public class CfmlTagScanner extends AbstractLangScanner {
 			allkeys[i++] = op.toUpperCase();
 
 		}
-		
+
 		CFKeywordDetector keywordDetector = new CFKeywordDetector();
 		PredicateWordRule keywordRule = new PredicateWordRule(keywordDetector, tagToken, allkeys, keywordToken);
-		keywordRule.setCaseSensitive(false);		
+		keywordRule.setCaseSensitive(false);							
 		rules.add(keywordRule);
 	}
 	

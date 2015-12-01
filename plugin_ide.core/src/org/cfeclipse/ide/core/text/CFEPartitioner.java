@@ -65,42 +65,16 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
         IDocumentPartitionerExtension, IDocumentPartitionerExtension2 { */
 
     private final static String CONTENT_TYPES_CATEGORY = "__content_types_category";
-    
-    /** The partitioner's scanner */
-    protected CfmlPartitionScanner fScanner;
-
-    /** The legal content types of this partitioner */
-    protected String[] fLegalContentTypes;
-
-    /** The partitioner's document */
-    protected IDocument fDocument;
-
-    /** The document length before a document change occurred */
-    protected int fPreviousDocumentLength;
-
-    /** The position updater used to for the  updating of partitions */
-    protected PositionUpdater fPositionUpdater;
-
-    /** The offset at which the first changed partition starts */
-    protected int fStartOffset;
-
-    /** The offset at which the last changed partition ends */
-    protected int fEndOffset;
-
-    /** The offset at which a partition has been deleted */
-    protected int fDeleteOffset;
-    
+        
     /** The offset at which a reparse should begin */
     private int fReparseStart = -1;
     
     /** The offset at which a reparse should end */
     private int fReparseEnd = -1;
 
-    /** The position index of the first partition affected by a document change */
-    //private int fReparseStartIndex;
-
     /** The position index of the last partition affected by a document change */
-    private int fReparseEndIndex;
+    @SuppressWarnings("unused")
+	private int fReparseEndIndex;
 
     
     /**
@@ -142,10 +116,7 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
     public CFEPartitioner(IPartitionTokenScanner scanner,
             String[] legalContentTypes) {    	
     	super(scanner, legalContentTypes);
-        fScanner = (CfmlPartitionScanner)scanner;
-        fLegalContentTypes = legalContentTypes;
         fPositionCategory = CONTENT_TYPES_CATEGORY + hashCode();
-        fPositionUpdater = new PositionUpdater(fPositionCategory);
         fPseudoPartitions = new Properties();
         fPseudoPartitions.put("cfquery",LangPartitionTypes.SQL.getId());
         fPseudoPartitions.put("cfscript",LangPartitionTypes.CF_SCRIPT.getId());
@@ -229,12 +200,14 @@ public class CFEPartitioner extends FastPartitioner {/*implements IDocumentParti
      * @return
      */
     private String handleToken(IToken token, String contentType) {
+    	System.out.println("handleToken called on CFEPartitioner");
         try {
             CFEPartition p = null;
             int length;
             int indexOffset = 0;
             String rawData = null;
             if (token.getData() instanceof TagData) {
+            	System.out.println("Token.getData() is instance of TagData");
                 TagData data = (TagData) token.getData();
                 int start = fScanner.getTokenOffset();
                 length = data.getFirstPartitionEnd();

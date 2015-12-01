@@ -127,8 +127,8 @@ public class NamedTagRule implements IPredicateRule {
 			    } else {
 			        data = new TagData(fPartitionType,tagString.toString(), fMidPartitionType,fPartitionType, new String(fStartSequence).substring(2));
 			    }
-				//return new Token(data);
-			    return data;
+				return new Token(data);
+			    //return data;
 			}
 		
 		} else {			
@@ -143,8 +143,8 @@ public class NamedTagRule implements IPredicateRule {
 					    } else {
 					        data = new TagData(fPartitionType,tagString.toString(), fMidPartitionType,fPartitionType, new String(fStartSequence).substring(2));
 					    }
-						//return new Token(data);
-					    return data;
+						return new Token(data);
+					    //return data;
 					}
 				}
 			}

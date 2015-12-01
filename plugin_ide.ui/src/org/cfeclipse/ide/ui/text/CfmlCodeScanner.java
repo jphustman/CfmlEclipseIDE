@@ -10,17 +10,15 @@
  *******************************************************************************/
 package org.cfeclipse.ide.ui.text;
 
-import org.cfeclipse.tooling.parser.lexer.CfmlWordLexerRule;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
-import org.eclipse.jface.text.rules.Token;
 
 import melnorme.lang.ide.ui.text.AbstractLangScanner;
 import melnorme.lang.ide.ui.text.coloring.TokenRegistry;
 import melnorme.utilbox.collections.ArrayList2;
 
 /**
- * Sample CFML code scanner
+ * CFML code scanner
  */
 public class CfmlCodeScanner extends AbstractLangScanner {
 	
@@ -33,6 +31,10 @@ public class CfmlCodeScanner extends AbstractLangScanner {
 		IToken defaultToken = getToken(CfmlColorPreferences.DEFAULT_TEXT);
 		setDefaultReturnToken(defaultToken);
 		
+//		CFScriptScanner cfss = new CFScriptScanner(null, null);
+		//rules.add(cfss);
+		
+		/*
 		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(
 			Token.WHITESPACE, 
 			defaultToken,
@@ -44,6 +46,7 @@ public class CfmlCodeScanner extends AbstractLangScanner {
 		);
 		
 		rules.add(new LexingRule_RuleAdapter(codeLexerRule));
+		*/
 	}
 	
 }

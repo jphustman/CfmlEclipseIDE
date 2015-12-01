@@ -33,5 +33,6 @@ Export-Package: melnorme.lang.tests,
  melnorme.utilbox.process,
  melnorme.utilbox.tests,
  melnorme.utilbox.tree,
+ org.cfeclipse.tooling.lexer,
  org.cfeclipse.tooling.parser.lexer
 Import-Package: org.eclipse.jface.text.rules

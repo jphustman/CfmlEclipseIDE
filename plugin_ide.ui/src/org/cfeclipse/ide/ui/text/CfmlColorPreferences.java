@@ -35,8 +35,8 @@ public interface CfmlColorPreferences {
 		new TextStyling(new RGB(60, 197, 255), true, false),
 		new TextStyling(new RGB(60, 197, 255), true, false));
 	ThemedTextStylingPreference CFML_OPERATOR = new ThemedTextStylingPreference(PREFIX + "cfml_operator",
-		new TextStyling(new RGB(0, 0, 255), false, false),
-		new TextStyling(new RGB(0, 0, 255), false, false));
+		new TextStyling(new RGB(60, 197, 255), false, false),
+		new TextStyling(new RGB(60, 197, 255), false, false));
 	ThemedTextStylingPreference CFML_NUMBER = new ThemedTextStylingPreference(PREFIX + "cfml_number",
 		new TextStyling(new RGB(255, 10, 10), false, false),
 		new TextStyling(new RGB(255, 10, 10), false, false));
@@ -45,5 +45,14 @@ public interface CfmlColorPreferences {
 		new TextStyling(new RGB(204, 0, 0), false, false));	
 	ThemedTextStylingPreference CFML_COMMENT = new ThemedTextStylingPreference(PREFIX + "cfml_comment",
 		new TextStyling(new RGB(128, 128, 128), false, false),
-		new TextStyling(new RGB(128, 128, 128), false, false));	
+		new TextStyling(new RGB(128, 128, 128), false, false));
+	ThemedTextStylingPreference CFML_BUILTINSCOPE = new ThemedTextStylingPreference(PREFIX + "cfml_builtinscope",
+			new TextStyling(new RGB(204, 0, 0), false, false),
+			new TextStyling(new RGB(204, 0, 0), false, false));
+	ThemedTextStylingPreference CFSCRIPT_FUNCTION = new ThemedTextStylingPreference(PREFIX + "cfscript_function",
+			new TextStyling(new RGB(0, 112, 0), false, false),
+			new TextStyling(new RGB(0, 112, 0), false, false));
+	ThemedTextStylingPreference CFML_JAVADOC = new ThemedTextStylingPreference(PREFIX + "cfml_javadoc",
+			new TextStyling(new RGB(42, 42, 42), false, false),
+			new TextStyling(new RGB(42, 42, 42), false, false));
 }

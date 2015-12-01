@@ -18,12 +18,10 @@ import melnorme.lang.ide.core.text.LangDocumentPartitionerSetup;
 
 public class CfmlDocumentSetupParticipant extends LangDocumentPartitionerSetup {
 
-	/*
 	@Override
 	public FastPartitioner createDocumentPartitioner() {
 		IPartitionTokenScanner scanner = TextSettings_Actual.createPartitionScanner();
 		return new CFEPartitioner(scanner, LEGAL_CONTENT_TYPES);
 	}
-	*/
 
 }

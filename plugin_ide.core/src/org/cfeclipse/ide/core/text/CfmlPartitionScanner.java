@@ -43,7 +43,8 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		IToken javaDocComment = new Token(LangPartitionTypes.JAVADOC_COMMENT.getId());
 		IToken htmComment 	= new Token(LangPartitionTypes.HTM_COMMENT.getId());
 		IToken taglibtag		= new Token(LangPartitionTypes.TAGLIB_TAG.getId());
-		IToken unktag		= new Token(LangPartitionTypes.UNK_TAG.getId());		
+		IToken unktag		= new Token(LangPartitionTypes.UNK_TAG.getId());	
+		IToken cfscriptRegion = new Token(LangPartitionTypes.CF_SCRIPT_REGION);
 		
 		//the order here is important. It should go from specific to
 		//general as the rules are applied in order
@@ -51,9 +52,13 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		// NestableMultiLineRule cfScriptRule = new NestableMultiLineRule("component", "}", cfScript);
 		// cfScriptRule.setColumnConstraint(0);
 		// rules.add(cfScriptRule);
-		rules.add(new CFScriptComponentRule("component", "{", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_TAG_ATTRIBS.getId()));
-		rules.add(new CFScriptComponentEndRule("}", LangPartitionTypes.CF_END_TAG.getId(), LangPartitionTypes.CF_SCRIPT.getId()));
+		//rules.add(new CFScriptComponentRule("component", "{", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_TAG_ATTRIBS.getId()));
+		//rules.add(new CFScriptComponentEndRule("}", LangPartitionTypes.CF_END_TAG.getId(), LangPartitionTypes.CF_SCRIPT.getId()));
 		// rules.add(new CFScriptComponentRule("}", "}", CF_SCRIPT, CF_SCRIPT));
+		
+		rules.add(new MultiLineRule("<cfscript>", "</cfscript>", cfscriptRegion));
+		rules.add(new MultiLineRule("<CFSCRIPT>", "</CFSCRIPT>", cfscriptRegion));
+		
 		rules.add(new CfmlEmptyCommentPredicateRule(cfscriptCommentBlock));
 		rules.add(new MultiLineRule("/**", "*/", javaDocComment, (char) 0, true));
 		rules.add(new MultiLineRule("/*", "*/", cfscriptCommentBlock, (char) 0, true));

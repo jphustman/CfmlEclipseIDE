@@ -56,7 +56,8 @@ public class TextSettings_Actual {
 		CFNUMBER,
 		CFSTRING,
 		HTML_TAG,
-		JAVADOC;
+		JAVADOC, 
+		CF_SCRIPT_REGION, CFML_JAVADOC;
 		
 		public String getId() {
 			if(ordinal() == 0) {
