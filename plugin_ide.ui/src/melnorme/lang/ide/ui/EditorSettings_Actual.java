@@ -47,23 +47,17 @@ public class EditorSettings_Actual {
 	public static StylingPreferences getStylingPreferences() {
 		return new StylingPreferences(
 			CfmlColorPreferences.DEFAULT_TEXT,				
-			CfmlColorPreferences.BACKGROUND_CFCOMMENT,
-			CfmlColorPreferences.BACKGROUND_JAVADOC,		
-			CfmlColorPreferences.CFBUILTINSCOPE,
-			CfmlColorPreferences.CFCOMMENT,
-			CfmlColorPreferences.CFKEYWORD,
-			CfmlColorPreferences.CFOPERATOR,
-			CfmlColorPreferences.CFNUMBER,
-			CfmlColorPreferences.CFSCOPE,
-			CfmlColorPreferences.CFSCRIPT_FUNCTION,
-			CfmlColorPreferences.CFSCRIPT_KEYWORD,
-			CfmlColorPreferences.CFSCRIPT_TEXT,
-			CfmlColorPreferences.CF_STRING,
-			CfmlColorPreferences.CF_TAG,
+			CfmlColorPreferences.CFML_COMMENT,
+			CfmlColorPreferences.CFML_KEYWORD,		
+			CfmlColorPreferences.CFML_NUMBER,
+			CfmlColorPreferences.CFML_OPERATOR,
+			CfmlColorPreferences.CFML_SCOPE,
+			CfmlColorPreferences.CFML_STRING,
+			CfmlColorPreferences.CFML_TAG,
 			CfmlColorPreferences.HTML_TAG,
-			CfmlColorPreferences.CF_TAG_ATTRIBUTE,
-			CfmlColorPreferences.JAVADOC,
-			CfmlColorPreferences.HTML_TAG_ATTRIBUTE
+			CfmlColorPreferences.CFML_BUILTINSCOPE,
+			CfmlColorPreferences.CFML_JAVADOC,
+			CfmlColorPreferences.CFSCRIPT_FUNCTION
 		);
 	}
 	

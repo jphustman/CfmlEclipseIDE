@@ -20,35 +20,35 @@ import melnorme.lang.ide.ui.text.coloring.AbstractSourceColoringConfigurationBlo
 import melnorme.util.swt.jface.LabeledTreeElement;
 
 public class SourceColoringConfigurationBlock extends AbstractSourceColoringConfigurationBlock {
-	
+
 	public SourceColoringConfigurationBlock() {
 		super();
 	}
-	
+
 	@Override
 	protected LabeledTreeElement[] createTreeElements() {
-		return array(
-			new SourceColoringCategory("Source", array(
-				new SourceColoringElement("CFML Scope", CfmlColorPreferences.CFML_SCOPE),					
-				new SourceColoringElement("CFML Tags", CfmlColorPreferences.CFML_TAG),
-				new SourceColoringElement("Default", CfmlColorPreferences.DEFAULT_TEXT),				
-				new SourceColoringElement("HTML Tags", CfmlColorPreferences.HTML_TAG),
-				new SourceColoringElement("Keywords", CfmlColorPreferences.CFML_KEYWORD),
-				new SourceColoringElement("Numbers", CfmlColorPreferences.CFML_NUMBER),				
-				new SourceColoringElement("Operators", CfmlColorPreferences.CFML_OPERATOR),				
-				new SourceColoringElement("Strings", CfmlColorPreferences.CFML_STRING)				
-			)),
-			new SourceColoringCategory("Comments", array(
-				new SourceColoringElement("Comment", CfmlColorPreferences.CFML_COMMENT)
-			))
-		);
+		return array(new SourceColoringCategory("Source",
+				array(new SourceColoringElement("Built-in Scope", CfmlColorPreferences.CFML_BUILTINSCOPE),
+						new SourceColoringElement("cfscript Function", CfmlColorPreferences.CFSCRIPT_FUNCTION),
+						new SourceColoringElement("CFML Scope", CfmlColorPreferences.CFML_SCOPE),
+						new SourceColoringElement("CFML Tags", CfmlColorPreferences.CFML_TAG),
+						new SourceColoringElement("Default", CfmlColorPreferences.DEFAULT_TEXT),
+						new SourceColoringElement("HTML Tags", CfmlColorPreferences.HTML_TAG),
+						new SourceColoringElement("Keywords", CfmlColorPreferences.CFML_KEYWORD),
+						new SourceColoringElement("Numbers", CfmlColorPreferences.CFML_NUMBER),
+						new SourceColoringElement("Operators", CfmlColorPreferences.CFML_OPERATOR),
+						new SourceColoringElement("Strings", CfmlColorPreferences.CFML_STRING)
+
+		)), new SourceColoringCategory("Comments",
+				array(new SourceColoringElement("Comment", CfmlColorPreferences.CFML_COMMENT),
+						new SourceColoringElement("Javadoc", CfmlColorPreferences.CFML_JAVADOC))));
 	}
-	
+
 	private static final String PREVIEW_FILE_NAME = "SourceColoringPreviewFile.lang";
-	
+
 	@Override
 	protected InputStream getPreviewContentAsStream() {
 		return getClass().getResourceAsStream(PREVIEW_FILE_NAME);
 	}
-	
+
 }
