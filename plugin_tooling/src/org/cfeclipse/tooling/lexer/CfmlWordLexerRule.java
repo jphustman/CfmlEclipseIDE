@@ -1,9 +1,7 @@
 package org.cfeclipse.tooling.lexer;
 
-import melnorme.lang.tooling.parser.lexer.CharacterReader_SubReader;
 import melnorme.lang.tooling.parser.lexer.WordLexerRule;
 import melnorme.lang.utils.parse.ICharacterReader;
-import melnorme.lang.utils.parse.LexingUtils;
 
 public class CfmlWordLexerRule<TOKEN> extends WordLexerRule<TOKEN> {
 	
