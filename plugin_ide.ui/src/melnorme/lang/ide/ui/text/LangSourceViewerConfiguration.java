@@ -1,31 +1,17 @@
 package melnorme.lang.ide.ui.text;
 
-import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
-
-import org.cfeclipse.ide.core.text.CfmlPartitionScanner;
 import org.cfeclipse.ide.ui.editor.CfmlCompletionProposalComputer;
-<<<<<<< 8f8fdd4d0d1e505939808feab061eda6dc81e391
-=======
 import org.cfeclipse.ide.ui.text.CFScriptScanner;
 import org.cfeclipse.ide.ui.text.CSSScanner;
 import org.cfeclipse.ide.ui.text.CfmlCodeScanner;
->>>>>>> Starting to recognise CFSCRIPT blocks now
 import org.cfeclipse.ide.ui.text.CfmlColorPreferences;
-import org.cfeclipse.ide.ui.text.CfmlEndTagScanner;
-import org.cfeclipse.ide.ui.text.CfmlSetTagScanner;
-import org.cfeclipse.ide.ui.text.CfmlStartTagScanner;
-import org.cfeclipse.ide.ui.text.HtmlStartTagScanner;
-import org.cfeclipse.ide.ui.text.CfmlStartTagEndScanner;
+import org.cfeclipse.ide.ui.text.CfmlTagScanner;
 import org.cfeclipse.ide.ui.text.HtmlTagScanner;
 import org.cfeclipse.ide.ui.text.JavaScriptScanner;
 import org.cfeclipse.ide.ui.text.SQLScanner;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.information.IInformationProvider;
-import org.eclipse.jface.text.presentation.IPresentationReconciler;
-import org.eclipse.jface.text.presentation.PresentationReconciler;
-import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
 import org.eclipse.jface.text.rules.Token;
-import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.widgets.Display;
 
 import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
@@ -37,7 +23,6 @@ import melnorme.lang.ide.ui.text.completion.ILangCompletionProposalComputer;
 import melnorme.lang.ide.ui.text.completion.LangContentAssistProcessor.ContentAssistCategoriesBuilder;
 import melnorme.lang.tooling.LANG_SPECIFIC;
 import melnorme.util.swt.jface.text.ColorManager2;
-import melnorme.utilbox.collections.ArrayList2;
 
 @LANG_SPECIFIC
 public class LangSourceViewerConfiguration extends AbstractLangSourceViewerConfiguration {

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.cfeclipse.ide.core.text;
 
-<<<<<<< 761c70ef36e2bb42be82da316a658b8dcf1f47ed
-=======
 import java.io.IOException;
 import java.net.URL;
 import java.util.Set;
@@ -19,11 +17,15 @@ import java.util.Set;
 import org.cfeclipse.tooling.parser.lexer.CfmlEmptyCommentPredicateRule;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.jface.text.rules.EndOfLineRule;
->>>>>>> Syntax highlighting largely complete
 import org.eclipse.jface.text.rules.IPredicateRule;
+import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
 import org.eclipse.jface.text.rules.Token;
 
+import cfml.dictionary.DictionaryManager;
+import cfml.dictionary.SyntaxDictionary;
+import cfml.dictionary.Tag;
+import cfml.dictionary.preferences.DictionaryPreferences;
 import melnorme.lang.ide.core.TextSettings_Actual.LangPartitionTypes;
 import melnorme.lang.ide.core.text.LangPartitionScanner;
 import melnorme.utilbox.collections.ArrayList2;
@@ -154,7 +156,14 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		//a different color
 		rules.add(new TagRule(unktag));
 		
-	}
+		//for debuggin
+		//rules.add(new ShowWhitespaceRule(new CFWhitespaceDetector()));
+		
+/*		IPredicateRule[] rulearry = new IPredicateRule[rules.size()];
+		rules.toArray(rulearry);
+		
+		setPredicateRules(rulearry);		
+*/	}
 	
 	/**
 	 * Return the String ranging from the start of the current partition to the current scanning position. Some rules

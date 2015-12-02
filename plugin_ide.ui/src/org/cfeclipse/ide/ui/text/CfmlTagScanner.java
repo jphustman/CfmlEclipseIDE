@@ -24,7 +24,7 @@ public class CfmlTagScanner extends AbstractLangScanner {
 		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
 		IToken numberToken = getToken(CfmlColorPreferences.CFML_NUMBER);
 		
-		rules.add(new MultiLineRule("<cfset", " ", tagToken));
+		rules.add(new MultiLineRule("\"", "\"", stringToken));
 		rules.add(new MultiLineRule("'","'",stringToken));
 		rules.add(new NumberRule(numberToken));				
 	}

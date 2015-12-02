@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.cfeclipse.ide.core.text;
 
+import org.eclipse.jface.text.rules.FastPartitioner;
+import org.eclipse.jface.text.rules.IPartitionTokenScanner;
+
+import melnorme.lang.ide.core.TextSettings_Actual;
 import melnorme.lang.ide.core.text.LangDocumentPartitionerSetup;
 
 public class CfmlDocumentSetupParticipant extends LangDocumentPartitionerSetup {
