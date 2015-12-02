@@ -11,6 +11,7 @@
 package melnorme.lang.ide.ui.editor.text;
 
 import org.eclipse.jface.text.Document;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import melnorme.lang.ide.ui.tests.CommonUITest;
@@ -19,6 +20,7 @@ import melnorme.lang.tooling.CompletionProposalKind;
 import melnorme.lang.tooling.ElementAttributes;
 import melnorme.lang.tooling.ToolCompletionProposal;
 
+@Ignore
 public class LangCompletionProposalTest extends CommonUITest {
 
 	@Test

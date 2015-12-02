@@ -13,7 +13,6 @@ package org.cfeclipse.ide.core.text;
 <<<<<<< 761c70ef36e2bb42be82da316a658b8dcf1f47ed
 =======
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
 
@@ -75,9 +74,10 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		rules.add(new NamedTagRule("<cfreturn",">", LangPartitionTypes.CF_START_TAG.getId(), LangPartitionTypes.CF_RETURN_STATEMENT.getId()));
 		
 		DictionaryPreferences dp = new DictionaryPreferences();
+
 		URL dictionaryDirURL;
 		try {
-			dictionaryDirURL = FileLocator.resolve(new URL("platform:/plugin/org.cfeclipse.ide.core/dictionary/"));
+			dictionaryDirURL = FileLocator.toFileURL(new URL("platform:/plugin/org.cfeclipse.ide.core/dictionary/"));
 			dp.setDictionaryDir(dictionaryDirURL.getFile());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

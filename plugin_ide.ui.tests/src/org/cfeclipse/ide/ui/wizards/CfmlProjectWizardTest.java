@@ -12,8 +12,9 @@ package org.cfeclipse.ide.ui.wizards;
 
 import melnorme.lang.ide.ui.dialogs.LangProjectWizardTest;
 import org.cfeclipse.ide.ui.wizards.CfmlProjectWizard;
+import org.junit.Ignore;
 
-
+@Ignore
 public class CfmlProjectWizardTest extends LangProjectWizardTest {
 	
 	@Override
