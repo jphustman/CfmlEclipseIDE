@@ -20,7 +20,8 @@ Require-Bundle: org.cfeclipse.tooling;visibility:=reexport,
  org.eclipse.debug.core;bundle-version="3.6.0"
 Bundle-ClassPath: .,
  lib/dictionary-0.0.1-SNAPSHOT.jar,
- lib/jdom-2.0.6.jar
+ lib/jdom-2.0.6.jar,
+ dictionary/
 Export-Package: cfml.dictionary,
  cfml.dictionary.preferences,
  cfml.dictionary.syntax,
