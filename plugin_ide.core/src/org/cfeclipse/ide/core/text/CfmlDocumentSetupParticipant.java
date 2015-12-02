@@ -23,5 +23,4 @@ public class CfmlDocumentSetupParticipant extends LangDocumentPartitionerSetup {
 		IPartitionTokenScanner scanner = TextSettings_Actual.createPartitionScanner();
 		return new CFEPartitioner(scanner, LEGAL_CONTENT_TYPES);
 	}
-
 }
