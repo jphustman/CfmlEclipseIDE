@@ -39,6 +39,7 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		IToken htmComment = new Token(LangPartitionTypes.HTM_COMMENT.getId());
 		IToken cfmlComment = new Token(LangPartitionTypes.CFML_COMMENT.getId());
 		IToken cfmlStartTag = new Token(LangPartitionTypes.CF_START_TAG.getId());
+		IToken cfmlCloseTag = new Token(LangPartitionTypes.CF_END_TAG.getId());
 		IToken htmlStartTag = new Token(LangPartitionTypes.HTM_START_TAG.getId());
 		IToken stringToken = new Token(LangPartitionTypes.CFSTRING.getId());
 		IToken cfscriptToken = new Token(LangPartitionTypes.CF_SCRIPT_REGION.getId());
@@ -51,7 +52,9 @@ public class CfmlPartitionScanner extends LangPartitionScanner {
 		rules.add(new MultiLineRule("<CFSCRIPT>", "</CFSCRIPT>", cfscriptToken));
 		rules.add(new MultiLineRule("component ", "tnenopmoc", cfscriptToken, NO_ESCAPE_CHAR, true));
 		rules.add(new NestableMultiLineRule("<cf", ">", cfmlStartTag));
-		rules.add(new NestableMultiLineRule("</cf", ">", cfmlStartTag));
+		rules.add(new NestableMultiLineRule("</cf", ">", cfmlCloseTag));
+		rules.add(new NestableMultiLineRule("<:", ">", cfmlStartTag)); // Lucee tags
+		rules.add(new NestableMultiLineRule("</:", ">", cfmlCloseTag)); // Lucee tags
 		rules.add(new NestableMultiLineRule("<", ">", htmlStartTag));
 
 		

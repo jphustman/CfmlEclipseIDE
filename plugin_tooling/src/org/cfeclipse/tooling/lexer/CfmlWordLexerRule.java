@@ -9,10 +9,6 @@ public class CfmlWordLexerRule<TOKEN> extends WordLexerRule<TOKEN> {
 			"true", "false",
 	};
 	
-	public static final String[] tag_names = { 
-			//"cfinvoke", "cfsetting", "cfoutput"
-	};	
-	
 	public static final String[] keywords = { 
 			"accessors",
 			"catch", 
@@ -41,12 +37,10 @@ public class CfmlWordLexerRule<TOKEN> extends WordLexerRule<TOKEN> {
 	public CfmlWordLexerRule(
 			TOKEN whitespaceToken, 
 			TOKEN defaultWordToken,
-			TOKEN cfTagToken,
 			TOKEN keywordToken
 			) {
 		super(whitespaceToken, defaultWordToken);
 		
-		addKeywords(cfTagToken, CfmlWordLexerRule.tag_names);
 		addKeywords(keywordToken, CfmlWordLexerRule.keywords);
 	}
 	

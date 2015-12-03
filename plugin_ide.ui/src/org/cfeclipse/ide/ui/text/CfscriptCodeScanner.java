@@ -14,6 +14,7 @@ import org.cfeclipse.tooling.lexer.CfmlWordLexerRule;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.MultiLineRule;
+import org.eclipse.jface.text.rules.NumberRule;
 import org.eclipse.jface.text.rules.SingleLineRule;
 import org.eclipse.jface.text.rules.Token;
 
@@ -38,17 +39,19 @@ public class CfscriptCodeScanner extends AbstractLangScanner {
 		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(
 				Token.WHITESPACE, 
 				defaultToken,
-				getToken(CfmlColorPreferences.CFML_TAG),
 				getToken(CfmlColorPreferences.CFML_KEYWORD)
 			);
 		rules.add(new LexingRule_RuleAdapter(codeLexerRule));
 		
 		IToken commentToken = getToken(CfmlColorPreferences.CFML_COMMENT);
 		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
+		IToken numberToken = getToken(CfmlColorPreferences.CFML_NUMBER);		
+		
 		rules.add(new SingleLineRule("//", null, commentToken));
 		rules.add(new MultiLineRule("/*", "*/", commentToken));
 		rules.add(new MultiLineRule("\"", "\"", stringToken, '\\'));
-		rules.add(new MultiLineRule("'", "'", stringToken, '\\'));		
+		rules.add(new MultiLineRule("'", "'", stringToken, '\\'));
+		rules.add(new NumberRule(numberToken));
 	}
 	
 }
