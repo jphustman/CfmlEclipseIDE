@@ -105,6 +105,7 @@ public class NestableMultiLineRule extends MultiLineRule {
 	protected IToken doEvaluate(ICharacterScanner scanner, boolean resume) {
 		if (resume) {
 			_commentNestingDepth = 0;
+			/*
 			if (scanner instanceof CfmlPartitionScanner) {
 				String scanned = ((CfmlPartitionScanner) scanner).getScannedPartitionString();
 				if (scanned != null && scanned.length() > 0) {
@@ -123,6 +124,7 @@ public class NestableMultiLineRule extends MultiLineRule {
 					}
 				}
 			}
+			*/
 			if (endSequenceDetected(scanner)) {
 				return fToken;
 			}

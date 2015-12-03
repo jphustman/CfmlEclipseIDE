@@ -20,7 +20,6 @@ public class CfmlTagScanner extends AbstractLangScanner {
 	@Override
 	protected void initRules(ArrayList2<IRule> rules) {
 		
-		//IToken attrToken = getToken(CfmlColorPreferences.CFML_ATTRIBUTE);
 		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
 		IToken numberToken = getToken(CfmlColorPreferences.CFML_NUMBER);
 		

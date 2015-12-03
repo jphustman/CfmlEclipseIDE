@@ -13,6 +13,8 @@ package org.cfeclipse.ide.ui.text;
 import org.cfeclipse.tooling.lexer.CfmlWordLexerRule;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
+import org.eclipse.jface.text.rules.MultiLineRule;
+import org.eclipse.jface.text.rules.SingleLineRule;
 import org.eclipse.jface.text.rules.Token;
 
 import melnorme.lang.ide.ui.text.AbstractLangScanner;
@@ -22,9 +24,9 @@ import melnorme.utilbox.collections.ArrayList2;
 /**
  * CFML code scanner
  */
-public class CfmlCodeScanner extends AbstractLangScanner {
+public class CfscriptCodeScanner extends AbstractLangScanner {
 	
-	public CfmlCodeScanner(TokenRegistry tokenStore) {
+	public CfscriptCodeScanner(TokenRegistry tokenStore) {
 		super(tokenStore);
 	}
 	
@@ -32,16 +34,21 @@ public class CfmlCodeScanner extends AbstractLangScanner {
 	protected void initRules(ArrayList2<IRule> rules) {
 		IToken defaultToken = getToken(CfmlColorPreferences.DEFAULT_TEXT);
 		setDefaultReturnToken(defaultToken);
-				
-//		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(
-//				Token.WHITESPACE, 
-//				defaultToken,
-//				getToken(CfmlColorPreferences.CFML_TAG),
-//				getToken(CfmlColorPreferences.CFML_KEYWORD)
-//			);
-			
-		//rules.add(new LexingRule_RuleAdapter(codeLexerRule));		
 		
+		CfmlWordLexerRule<IToken> codeLexerRule = new CfmlWordLexerRule<>(
+				Token.WHITESPACE, 
+				defaultToken,
+				getToken(CfmlColorPreferences.CFML_TAG),
+				getToken(CfmlColorPreferences.CFML_KEYWORD)
+			);
+		rules.add(new LexingRule_RuleAdapter(codeLexerRule));
+		
+		IToken commentToken = getToken(CfmlColorPreferences.CFML_COMMENT);
+		IToken stringToken = getToken(CfmlColorPreferences.CFML_STRING);
+		rules.add(new SingleLineRule("//", null, commentToken));
+		rules.add(new MultiLineRule("/*", "*/", commentToken));
+		rules.add(new MultiLineRule("\"", "\"", stringToken, '\\'));
+		rules.add(new MultiLineRule("'", "'", stringToken, '\\'));		
 	}
 	
 }

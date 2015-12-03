@@ -5,23 +5,32 @@ import melnorme.lang.utils.parse.ICharacterReader;
 
 public class CfmlWordLexerRule<TOKEN> extends WordLexerRule<TOKEN> {
 	
-	public static final String[] keywords_control = { 
-			"abstract", "alignof", "as", "become", "box", "break", "const", "continue", "crate", 
-			"do", "else", "enum", "extern", "final", "fn", "for", "if", "impl", "in", "let", 
-			"loop", "macro", "match", "mod", "move", "mut", "offsetof", "override", 
-			"priv", "proc", "pub", "pure", "ref", "return", "sizeof", "static", "struct", 
-			"trait", "type", "typeof", "unsafe", "unsized", "use", "virtual", "where", "while", "yield" 
-	};
 	public static final String[] keywords_boolean_lit = { 
 			"true", "false",
 	};
-	public static final String[] keywords_self = { 
-			"self", "Self", "super"
-	};
 	
 	public static final String[] tag_names = { 
-			"cfinvoke", "cfsetting", "cfoutput"
+			//"cfinvoke", "cfsetting", "cfoutput"
 	};	
+	
+	public static final String[] keywords = { 
+			"accessors",
+			"catch", 
+			"component",
+			"else",
+			"extends",
+			"function",
+			"if",
+			"for",
+			"param",
+			"protected", 
+			"private", 
+			"public",
+			"return",
+			"try",
+			"var"
+	};	
+	
 	/* -----------------  ----------------- */
 	
 	//protected final RustNumberLexingRule rustNumberLexingRule = new RustNumberLexingRule();
@@ -31,12 +40,14 @@ public class CfmlWordLexerRule<TOKEN> extends WordLexerRule<TOKEN> {
 	
 	public CfmlWordLexerRule(
 			TOKEN whitespaceToken, 
-			TOKEN tagNames,
-			TOKEN word
+			TOKEN defaultWordToken,
+			TOKEN cfTagToken,
+			TOKEN keywordToken
 			) {
-		super(whitespaceToken, word);
+		super(whitespaceToken, defaultWordToken);
 		
-		addKeywords(tagNames, CfmlWordLexerRule.tag_names);
+		addKeywords(cfTagToken, CfmlWordLexerRule.tag_names);
+		addKeywords(keywordToken, CfmlWordLexerRule.keywords);
 	}
 	
 	@Override

@@ -80,7 +80,7 @@ public class EditorSettings_Actual {
 					LangPartitionTypes.CODE.getId(), 
 					LangPartitionTypes.CF_SCRIPT_COMMENT_BLOCK.getId(), 
 					LangPartitionTypes.CF_SCRIPT_COMMENT.getId(), 
-					LangPartitionTypes.CF_COMMENT.getId(),
+					LangPartitionTypes.CFML_COMMENT.getId(),
 					LangPartitionTypes.HTML_COMMENT.getId() 
 				));
 			}

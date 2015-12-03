@@ -16,7 +16,7 @@ public class TextSettings_Actual {
 	public static enum LangPartitionTypes {
 		CODE, 
 		DOCTYPE, 
-		CF_COMMENT, 
+		CFML_COMMENT, 
 		CF_SCRIPT_COMMENT_BLOCK, 
 		JAVADOC_COMMENT, 
 		HTM_COMMENT, 
